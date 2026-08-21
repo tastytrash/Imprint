@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "imprint",
+  "version": "${version}",
+  "name": "Imprint",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/imprint/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "org.tastytrash.imprint.client.ImprintClient"
+    ],
+    "modmenu": [
+      "org.tastytrash.imprint.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "imprint.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

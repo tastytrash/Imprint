@@ -1,0 +1,33 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        maven {
+            name = 'Stonecutter'
+            url = 'https://maven.kikugie.dev/releases'
+        }
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'dev.kikugie.stonecutter' version '0.9+'
+}
+
+stonecutter {
+    kotlinController = false
+    centralScript = 'build.gradle'
+
+    create(rootProject) {
+        version('26.1-fabric', '26.1')
+        version('26.1.1-fabric', '26.1.1')
+        version('26.1.2-fabric', '26.1.2')
+        version('26.2-fabric', '26.2')
+
+        vcsVersion = '26.2-fabric'
+    }
+}
+
+rootProject.name = 'imprint'
