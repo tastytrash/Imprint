@@ -29,6 +29,7 @@ public class ImprintClient
     //? }
 
     //? if neoforge {
+    /*
     @net.neoforged.fml.common.EventBusSubscriber(modid = ImprintClient.MOD_ID, value = net.neoforged.api.distmarker.Dist.CLIENT)
     public static class NeoForgeEvents {
         @net.neoforged.bus.api.SubscribeEvent
@@ -36,5 +37,6 @@ public class ImprintClient
             FootprintSpawner.tick(net.minecraft.client.Minecraft.getInstance());
         }
     }
+     */
     //? }
 }

@@ -4,13 +4,10 @@ license = "MIT" # Change this to your preferred license (e.g., ARR, GPLv3)
 # A URL to link to for more information about the mod file
 # displayURL = "https://modrinth.com"
 
-# A list of mods contained in this file.
 [[mods]]
-# The unique mod ID. Must match the value in your @Mod annotation.
 modId = "imprint"
 
-# The version number of the mod. Injected automatically by our script.
-version = "${version}"
+version = "1.0"
 
 # The human-readable name of the mod
 displayName = "Imprint"
@@ -26,7 +23,7 @@ description = "A simple, zero-dependency client-side mod."
 [[dependencies.imprint]]
 modId = "neoforge"
 type = "required"
-# This automatically matches the target environment bounds
+
 versionRange = "[26,)"
 ordering = "NONE"
 side = "CLIENT"
@@ -34,7 +31,7 @@ side = "CLIENT"
 [[dependencies.imprint]]
 modId = "minecraft"
 type = "required"
-# Matches your 26.1 - 26.2 client bounds safely
-versionRange = "[1.21,1.22)"
+
+versionRange = "[26.1,26.2]"
 ordering = "NONE"
 side = "CLIENT"

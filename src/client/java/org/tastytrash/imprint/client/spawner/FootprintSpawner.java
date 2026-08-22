@@ -12,6 +12,7 @@ import org.tastytrash.imprint.client.util.FootprintSizeUtils;
 
 //? if fabric {
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.EntityLoadData;
 //? }
 
 import java.util.Map;
