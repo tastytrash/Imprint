@@ -3,9 +3,13 @@
   "id": "imprint",
   "version": "${version}",
   "name": "Imprint",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Adds customizable vanilla-style footprint particles.",
+  "authors": [
+    "tastytrash"
+  ],
+  "contact": {
+    "sources": "https://github.com/tastytrash/imprint"
+  },
   "license": "MIT",
   "icon": "assets/imprint/icon.png",
   "environment": "client",
@@ -14,7 +18,7 @@
       "org.tastytrash.imprint.client.ImprintClient"
     ],
     "modmenu": [
-      "org.tastytrash.imprint.client.ModMenuIntegration"
+      "org.tastytrash.imprint.client.config.ModMenuIntegration"
     ]
   },
   "mixins": [

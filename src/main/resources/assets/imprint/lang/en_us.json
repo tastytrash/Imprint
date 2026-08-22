@@ -1,15 +1,21 @@
 {
+  "text.autoconfig.imprint.title": "Imprint",
+
+  "text.autoconfig.imprint.category.general": "General",
+  "text.autoconfig.imprint.category.movement": "Movement & Timing",
+  "text.autoconfig.imprint.category.visuals": "Visuals & Particles",
+
   "text.autoconfig.imprint.option.enabled": "Enabled",
   "text.autoconfig.imprint.option.enabled.@Tooltip": "Enable or disable footprint rendering.",
   "text.autoconfig.imprint.option.footprintLifetime": "Footprint Lifetime",
-  "text.autoconfig.imprint.option.footprintLifetime.@Tooltip": "How long (in ticks) footprints remain visible.",
+  "text.autoconfig.imprint.option.footprintLifetime.@Tooltip": "How long footprints remain visible. (ticks)",
   "text.autoconfig.imprint.option.tickInterval": "Tick Interval",
-  "text.autoconfig.imprint.option.tickInterval.@Tooltip": "Number of ticks between footprint spawns.",
+  "text.autoconfig.imprint.option.tickInterval.@Tooltip": "Base number of ticks between footprints.",
   "text.autoconfig.imprint.option.speedThreshold": "Speed Threshold",
-  "text.autoconfig.imprint.option.speedThreshold.@Tooltip": "Minimum movement speed (blocks/t) required to spawn footprints.",
+  "text.autoconfig.imprint.option.speedThreshold.@Tooltip": "Minimum movement speed (in blocks/sec) required to spawn footprints.",
 
   "text.autoconfig.imprint.option.footOffset": "Foot Offset",
-  "text.autoconfig.imprint.option.footOffset.@Tooltip": "Distance from the player to spawn footprints.",
+  "text.autoconfig.imprint.option.footOffset.@Tooltip": "Distance from the player (in blocks) to spawn footprints.",
   "text.autoconfig.imprint.option.footprintSize": "Footprint Size",
   "text.autoconfig.imprint.option.footprintSize.@Tooltip": "Size of the footprint collision check.",
   "text.autoconfig.imprint.option.showWhileCrouching": "Show While Crouching",
@@ -22,11 +28,8 @@
   "text.autoconfig.imprint.option.showOtherPlayers.@Tooltip": "Whether to show footprints for other players.",
   "text.autoconfig.imprint.option.showMobs": "Show Mobs",
   "text.autoconfig.imprint.option.showMobs.@Tooltip": "Whether to show footprints for mobs and other non-player entities.",
-  "text.autoconfig.imprint.option.mobSpeedThreshold": "Mob Speed Threshold",
-  "text.autoconfig.imprint.option.mobSpeedThreshold.@Tooltip": "Minimum movement speed (blocks/t) required for mobs to spawn footprints.",
-  "text.autoconfig.imprint.option.particleSettings": "Particle Settings",
-  "text.autoconfig.imprint.option.particleSettings.alpha": "Alpha",
-  "text.autoconfig.imprint.option.particleSettings.alpha.@Tooltip": "Transparency of footprints (0-255).",
-  "text.autoconfig.imprint.option.particleSettings.scale": "Scale",
-  "text.autoconfig.imprint.option.particleSettings.scale.@Tooltip": "Scale multiplier for footprint size. (default recommended)"
+  "text.autoconfig.imprint.option.alpha": "Footprint Alpha",
+  "text.autoconfig.imprint.option.alpha.@Tooltip": "% Transparency of footprints.",
+  "text.autoconfig.imprint.option.scale": "Footprint Scale",
+  "text.autoconfig.imprint.option.scale.@Tooltip": "Scale multiplier for footprint size. (default recommended)"
 }

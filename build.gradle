@@ -107,6 +107,7 @@ java {
 }
 
 jar {
+    destinationDirectory = file(rootProject.layout.projectDirectory.dir("versions/all"))
     from("LICENSE") {
         rename { "${it}_${project.archives_base_name}" }
     }

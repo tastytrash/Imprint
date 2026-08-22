@@ -1,4 +1,4 @@
-package org.tastytrash.imprint.client;
+package org.tastytrash.imprint.client.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
