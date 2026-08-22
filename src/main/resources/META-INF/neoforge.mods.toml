@@ -1,0 +1,40 @@
+# The license for your mod. This is mandatory.
+license = "MIT" # Change this to your preferred license (e.g., ARR, GPLv3)
+
+# A URL to link to for more information about the mod file
+# displayURL = "https://modrinth.com"
+
+# A list of mods contained in this file.
+[[mods]]
+# The unique mod ID. Must match the value in your @Mod annotation.
+modId = "imprint"
+
+# The version number of the mod. Injected automatically by our script.
+version = "${version}"
+
+# The human-readable name of the mod
+displayName = "Imprint"
+
+# A text description of the mod (Keep it short, or wrap with "" for multi-line)
+description = "A simple, zero-dependency client-side mod."
+
+# A link to your issue tracker
+# issueTrackerURL = "https://github.com"
+
+# Dependency Configuration
+# Here we define the platform rules so players don't crash without the basic engine components.
+[[dependencies.imprint]]
+modId = "neoforge"
+type = "required"
+# This automatically matches the target environment bounds
+versionRange = "[26,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.imprint]]
+modId = "minecraft"
+type = "required"
+# Matches your 26.1 - 26.2 client bounds safely
+versionRange = "[1.21,1.22)"
+ordering = "NONE"
+side = "CLIENT"

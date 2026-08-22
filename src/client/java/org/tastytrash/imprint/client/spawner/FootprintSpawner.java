@@ -1,7 +1,7 @@
 package org.tastytrash.imprint.client.spawner;
 
 import com.google.common.collect.Maps;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,6 +9,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import org.tastytrash.imprint.client.ImprintClient;
 import org.tastytrash.imprint.client.util.FootprintSizeUtils;
+
+//? if fabric {
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+//? }
 
 import java.util.Map;
 import java.util.UUID;
@@ -27,50 +31,54 @@ public class FootprintSpawner {
     }
 
     public static void register() {
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.level == null || client.player == null || client.isPaused()) return;
+        //? if fabric {
+        ClientTickEvents.END_CLIENT_TICK.register(FootprintSpawner::tick);
+        //? }
+    }
 
-            for (Entity entity : client.level.entitiesForRendering()) {
-                if (!(entity instanceof LivingEntity livingEntity)) continue;
+    public static void tick(Minecraft client) {
+        if (client.level == null || client.player == null || client.isPaused()) return;
 
-                boolean shouldProcess = entity == client.player || 
-                                       (entity instanceof Player && ImprintClient.config.showOtherPlayers) ||
-                                       (!(entity instanceof Player) && ImprintClient.config.showMobs);
-                if (!shouldProcess) continue;
+        for (Entity entity : client.level.entitiesForRendering()) {
+            if (!(entity instanceof LivingEntity livingEntity)) continue;
 
-                EntityState state = entityStates.computeIfAbsent(entity.getUUID(), uuid -> new EntityState());
-                boolean isOnGround = livingEntity.onGround();
+            boolean shouldProcess = entity == client.player ||
+                                   (entity instanceof Player && ImprintClient.config.showOtherPlayers) ||
+                                   (!(entity instanceof Player) && ImprintClient.config.showMobs);
+            if (!shouldProcess) continue;
 
-                if (isOnGround && !state.wasOnGround) {
-                    state.tickCounter = ImprintClient.config.tickInterval;
-                    state.isRightFoot = true;
+            EntityState state = entityStates.computeIfAbsent(entity.getUUID(), uuid -> new EntityState());
+            boolean isOnGround = livingEntity.onGround();
+
+            if (isOnGround && !state.wasOnGround) {
+                state.tickCounter = ImprintClient.config.tickInterval;
+                state.isRightFoot = true;
+            }
+            state.wasOnGround = isOnGround;
+
+            double speedThreshold = (entity instanceof Player) ? ImprintClient.config.speedThreshold/20 : 0.01;
+            double speed = livingEntity.getDeltaMovement().horizontal().length();
+            boolean isAboveThreshold = speed > speedThreshold;
+
+            if (isOnGround && (ImprintClient.config.showWhileCrouching || !livingEntity.isCrouching())) {
+                if (!state.wasAboveThreshold && isAboveThreshold) {
+                    state.tickCounter = calculateDynamicTickInterval(entity, speed);
                 }
-                state.wasOnGround = isOnGround;
+                state.wasAboveThreshold = isAboveThreshold;
 
-                double speedThreshold = (entity instanceof Player) ? ImprintClient.config.speedThreshold/20 : 0.01;
-                double speed = livingEntity.getDeltaMovement().horizontal().length();
-                boolean isAboveThreshold = speed > speedThreshold;
-
-                if (isOnGround && (ImprintClient.config.showWhileCrouching || !livingEntity.isCrouching())) {
-                    if (!state.wasAboveThreshold && isAboveThreshold) {
-                        state.tickCounter = calculateDynamicTickInterval(entity, speed);
-                    }
-                    state.wasAboveThreshold = isAboveThreshold;
-
-                    if (isAboveThreshold) {
-                        state.tickCounter++;
-                        int dynamicInterval = calculateDynamicTickInterval(entity, speed);
-                        if (state.tickCounter >= dynamicInterval) {
-                            spawnFootprint(client, livingEntity, state);
-                        }
+                if (isAboveThreshold) {
+                    state.tickCounter++;
+                    int dynamicInterval = calculateDynamicTickInterval(entity, speed);
+                    if (state.tickCounter >= dynamicInterval) {
+                        spawnFootprint(client, livingEntity, state);
                     }
                 }
             }
+        }
 
-            entityStates.entrySet().removeIf(entry -> {
-                Entity entity = client.level.getEntity(entry.getKey());
-                return entity == null || !entity.isAlive();
-            });
+        entityStates.entrySet().removeIf(entry -> {
+            Entity entity = client.level.getEntity(entry.getKey());
+            return entity == null || !entity.isAlive();
         });
     }
 
