@@ -3,6 +3,7 @@ package org.tastytrash.imprint.client.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.clothconfig2.gui.entries.SelectionListEntry;
 
 @Config(name = "imprint")
 public class ImprintConfig implements ConfigData {
@@ -23,19 +24,6 @@ public class ImprintConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean showWhileCrouching = true;
 
-    @ConfigEntry.Category("movement")
-    @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 20)
-    public int tickInterval = 7;
-
-    @ConfigEntry.Category("movement")
-    @ConfigEntry.Gui.Tooltip
-    public double speedThreshold = 0.6;
-
-    @ConfigEntry.Category("movement")
-    @ConfigEntry.Gui.Tooltip
-    public double footOffset = 0.3;
-
     @ConfigEntry.Category("visuals")
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.BoundedDiscrete(min = 1, max = 300)
@@ -49,7 +37,7 @@ public class ImprintConfig implements ConfigData {
     @ConfigEntry.Category("visuals")
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    public int alpha = 100;
+    public int alpha = 40;
 
     @ConfigEntry.Category("visuals")
     @ConfigEntry.Gui.Tooltip
@@ -58,4 +46,17 @@ public class ImprintConfig implements ConfigData {
     @ConfigEntry.Category("visuals")
     @ConfigEntry.Gui.Tooltip
     public boolean rainbowMode = false;
+
+    @ConfigEntry.Category("movement")
+    @ConfigEntry.Gui.Tooltip
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 20)
+    public int tickInterval = 7;
+
+    @ConfigEntry.Category("movement")
+    @ConfigEntry.Gui.Tooltip
+    public double speedThreshold = 0.6;
+
+    @ConfigEntry.Category("movement")
+    @ConfigEntry.Gui.Tooltip
+    public double footOffset = 0.3;
 }

@@ -47,7 +47,7 @@
 
             if (ImprintClient.config.rainbowMode) {
                 float hue = (float) (velX * 0.1) % 1.0f;
-                int rgb = Color.HSBtoRGB(hue, 1.0f, 0.5f);
+                int rgb = Color.HSBtoRGB(hue, 1.0f, 0.8f);
                 float r1 = ((rgb >> 16) & 0xFF) / 255.0f;
                 float g1 = ((rgb >> 8) & 0xFF) / 255.0f;
                 float b1 = (rgb & 0xFF) / 255.0f;

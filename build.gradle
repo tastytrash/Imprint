@@ -48,10 +48,12 @@ if (stonecutterVersion.contains('26.1.2')) {
     project.ext.fabric_version = '0.145.4+26.1.1'
 } else if (stonecutterVersion.contains('26.1')) {
     project.ext.minecraft_version = '26.1'
+    project.ext.minecraft_version_range = '>=26.1 <=26.1.2'
     project.ext.loader_version = '0.18.4'
     project.ext.fabric_version = '0.145.1+26.1'
 } else {
     project.ext.minecraft_version = '26.2'
+    project.ext.minecraft_version_range = '26.2'
     project.ext.loader_version = '0.19.3'
     project.ext.fabric_version = '0.158.0+26.2'
 }
@@ -73,12 +75,14 @@ dependencies {
 processResources {
     inputs.property "version", project.version
     inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "minecraft_version_range", project.minecraft_version_range
     inputs.property "loader_version", project.loader_version
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version,
                 "minecraft_version": project.minecraft_version,
+                "minecraft_version_range": project.minecraft_version_range,
                 "loader_version": project.loader_version
     }
 }
