@@ -96,3 +96,18 @@ dependencies {
 	modImplementation("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${prop("deps.cloth_config")}")
 }
+
+afterEvaluate {
+	val jarTaskName = if (tasks.findByName("remapJar") != null) "remapJar" else "jar"
+
+	tasks.register<Copy>("copyToBuildAll") {
+		dependsOn(jarTaskName)
+		val buildAllDir = file("${rootProject.projectDir}/versions-build")
+		from(tasks.named(jarTaskName))
+		into(buildAllDir)
+	}
+}
+
+tasks.build {
+	dependsOn("copyToBuildAll")
+}

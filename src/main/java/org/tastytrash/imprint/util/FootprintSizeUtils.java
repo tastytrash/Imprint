@@ -138,12 +138,12 @@ public class FootprintSizeUtils {
         register(EntityType.WITHER_SKELETON, FootprintSize.SMALL, 0.14);
         register(EntityType.STRAY, FootprintSize.SMALL, 0.12);
 		//? > 1.20.1 {
-        // register(EntityType.BOGGED, FootprintSize.SMALL, 0.12);
-		// register(EntityType.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
-		//? }
+         /*register(EntityType.BOGGED, FootprintSize.SMALL, 0.12);
+		 register(EntityType.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
+		*///? }
 		//? >=1.21.9 {
-        //register(EntityType.COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
-		//? }
+        /*register(EntityType.COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
+		*///? }
 
         // medium
         register(EntityType.PLAYER, FootprintSize.MEDIUM, ImprintClient.config.footOffset);

@@ -66,13 +66,27 @@ neoForge {
 repositories {
 	mavenCentral()
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	maven {
+		name = "Cloth Config"
+		url = uri("https://maven.shedaniel.me/")
+	}
 }
 
 dependencies {
-	// implementation(libs.moulberry.mixinconstraints)
-	// jarJar(libs.moulberry.mixinconstraints)
+	implementation("me.shedaniel.cloth:cloth-config-neoforge:${prop("deps.cloth_config")}")
 }
 
 tasks.named("createMinecraftArtifacts") {
 	dependsOn(tasks.named("stonecutterGenerate"))
+}
+
+tasks.register<Copy>("copyToBuildAll") {
+	dependsOn("jar")
+	val buildAllDir = file("${rootProject.projectDir}/versions-build")
+	from(tasks.named<Jar>("jar").get().archiveFile)
+	into(buildAllDir)
+}
+
+tasks.build {
+	dependsOn("copyToBuildAll")
 }

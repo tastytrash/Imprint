@@ -21,9 +21,9 @@ public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
 		//? >= 26.1 {
-		
+
 		/*return parent -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parent).get();
-		
+
 		*///? } else {
 		return parent -> AutoConfig.getConfigScreen(ImprintConfig.class, parent).get();
 		//? }
@@ -31,9 +31,6 @@ public class ModMenuIntegration implements ModMenuApi {
     }
 }
 //?} neoforge {
-/*public class ModMenuIntegration {
-}
-*///?} forge {
 /*public class ModMenuIntegration {
 }
 *///?}

@@ -66,4 +66,11 @@ public class ImprintConfig implements ConfigData {
     @ConfigEntry.Category("visuals")
     @ConfigEntry.Gui.Tooltip
     public boolean enableDustParticles = true;
+
+	@Override
+	public void validatePostLoad() throws ValidationException {
+		if (this.footprintLifetime < 0.0) {
+			this.footprintLifetime = 0.0;
+		}
+	}
 }

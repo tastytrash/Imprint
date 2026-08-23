@@ -9,9 +9,7 @@ import org.slf4j.LoggerFactory;
 //? fabric {
 import org.tastytrash.imprint.platform.fabric.FabricPlatform;
 //?} neoforge {
-/*import com.example.modtemplate.platform.neoforge.NeoforgePlatform;
- *///?} forge {
-/*import com.example.modtemplate.platform.forge.ForgePlatform;
+/*import org.tastytrash.imprint.platform.neoforge.NeoforgePlatform;
  *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -43,23 +41,21 @@ public class Imprint {
 		return new FabricPlatform();
 		//?} neoforge {
 		/*return new NeoforgePlatform();
-		 *///?} forge {
-		/*return new ForgePlatform();
 		 *///?}
 	}
 
 	private static ResourceLocation id(String path) {
 		//? > 1.20.1 {
-		// return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-		 //?} <= 1.20.1 {
+		 /*return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+		 *///?} <= 1.20.1 {
 		return new ResourceLocation(MOD_ID, path);
 		//?}
 	}
 
 	private static ResourceLocation id(String namespace, String path) {
 		//? > 1.20.1 {
-		// return ResourceLocation.fromNamespaceAndPath(namespace, path);
-		//?} <= 1.20.1 {
+		 /*return ResourceLocation.fromNamespaceAndPath(namespace, path);
+		*///?} <= 1.20.1 {
 		return new ResourceLocation(namespace, path);
 		//?}
 	}

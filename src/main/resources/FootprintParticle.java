@@ -95,15 +95,15 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 
 	//? > 1.20.1 {
-	/*
-	@Override
+	
+	/*@Override
 	public FacingCameraMode getFacingCameraMode() {
 		return (target, camera, partialTickTime) -> {
 			target.set(-0.7071F, 0.0F, 0.0F, 0.7071F);
 		};
 	}
-	*/
-	//? } else {
+	
+	*///? } else {
 	@Override
 	public void render(com.mojang.blaze3d.vertex.VertexConsumer buffer, net.minecraft.client.Camera camera, float partialTicks) {
 		// provided by Gemini ai

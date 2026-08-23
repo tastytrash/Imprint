@@ -1,8 +1,9 @@
  package org.tastytrash.imprint.particle;
 
-
+//? if fabric {
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+//? }
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -11,6 +12,7 @@ import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -38,7 +40,7 @@ public class FootprintParticle extends SingleQuadParticle {
 		*///? }
 
 		this.sprites = sprites;
-		this.lifetime = (int) (ImprintClient.config.footprintLifetime * 20);
+		this.lifetime = Mth.abs((int) (ImprintClient.config.footprintLifetime * 20));
 		this.quadSize = size;
 		this.gravity = 0.0f;
 
@@ -94,16 +96,22 @@ public class FootprintParticle extends SingleQuadParticle {
 		}
 	}
 
+	//? >= 26.1 {
+	/*@Override
+	protected Layer getLayer() {
+		return Layer.TRANSLUCENT;
+	}
+	*///? }
+
 	//? > 1.20.1 {
-	/*
-	@Override
+	/*@Override
 	public FacingCameraMode getFacingCameraMode() {
 		return (target, camera, partialTickTime) -> {
 			target.set(-0.7071F, 0.0F, 0.0F, 0.7071F);
 		};
 	}
-	*/
-	//? } else {
+
+	*///? } else {
 	@Override
 	public void render(com.mojang.blaze3d.vertex.VertexConsumer buffer, net.minecraft.client.Camera camera, float partialTicks) {
 		// provided by Gemini ai
@@ -151,12 +159,8 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 	//? }
 
-	//? >= 26.1 {
-
-	/*@Override
-	protected Layer getLayer() {
-		return Layer.TRANSLUCENT;
-	}
+	//? >= 26.1 && fabric {
+	/*
 
 	@Environment(EnvType.CLIENT)
 	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
@@ -167,8 +171,9 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(world, x, y, z, velocityX, velocityY, velocityZ, yaw, sprites, size);
 		}
 	}
-
-	*///? } else {
+	*/
+	//? } else if fabric {
+	
 	@Environment(EnvType.CLIENT)
 	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
@@ -179,5 +184,25 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(clientLevel, d, e, f, g, h, i, yaw, sprites, size);
 		}
 	}
-	//? }
+	
+	//? } else if neoforge && < 26.1 {
+//	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+//
+//		@Nullable
+//		@Override
+//		public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+//			float yaw = (float) Math.toDegrees(Math.atan2(i, g));
+//			return new FootprintParticle(clientLevel, d, e, f, g, h, i, yaw, sprites, size);
+//		}
+//	}
+	//? } else if neoforge {
+		/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+
+		@Override
+		public @org.jspecify.annotations.Nullable Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double v, double v1, double v2, double v3, double v4, double v5, RandomSource randomSource) {
+			float yaw = (float) Math.toDegrees(Math.atan2(v5, v3));
+			return new FootprintParticle(clientLevel, v, v1, v2, v3, v4, v5, yaw, sprites, size);
+		}
+	}
+	*///? }
 }
