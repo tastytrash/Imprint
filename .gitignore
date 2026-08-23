@@ -58,3 +58,6 @@ bin/
 !.idea/runConfigurations/Run_Active_Server.xml
 /versions-build/
 /versions/
+/.idea/
+.sc_active_version
+.pre-commit-config.yaml
