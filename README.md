@@ -13,11 +13,12 @@ A client-side mod that adds vanilla-style footprint particles. Shows footprints 
 ![Config menu](https://cdn.modrinth.com/data/cached_images/0c060a1f1763431250481de29ff980ec17099ff7.png)
 ## Dependencies
 
-Fabric API and Cloth Config are required.
+Fabric API (when using fabric)
+Cloth Config
 
 ## Configuration
 
-Access settings via Mod Menu or edit the config file.
+Access settings via Mod Menu (fabric) or edit the config file.
 
 ## Compatibility
 
