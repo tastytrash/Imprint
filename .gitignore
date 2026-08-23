@@ -61,3 +61,4 @@ bin/
 /.idea/
 .sc_active_version
 .pre-commit-config.yaml
+/scripts/
