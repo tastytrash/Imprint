@@ -27,7 +27,9 @@ public class ParticleRegistry {
     }
 
     private static SimpleParticleType register(String name, ParticleProviderRegistry.PendingParticleProvider<SimpleParticleType> constructor) {
-        var particle = Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name), FabricParticleTypes.simple());
+        var particle = Registry.register(BuiltInRegistries.PARTICLE_TYPE,
+                Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
+                FabricParticleTypes.simple(true));
         FACTORIES.put(particle, constructor);
         return particle;
     }

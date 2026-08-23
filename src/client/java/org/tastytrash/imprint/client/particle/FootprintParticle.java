@@ -27,8 +27,8 @@
             super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
 
             this.sprites = sprites;
-            this.lifetime = ImprintClient.config.footprintLifetime;
-            this.quadSize = size * (float) ImprintClient.config.scale;
+            this.lifetime = (int) (ImprintClient.config.footprintLifetime * 20);
+            this.quadSize = size;
             this.gravity = 0.0f;
 
             BlockPos pos = BlockPos.containing(x, y - 0.01, z);
@@ -43,7 +43,7 @@
             if (hardnessFactor < 0 || hardnessFactor > (1 / HARDNESS_MULTIPLIER)) hardnessFactor = (1 / HARDNESS_MULTIPLIER);
             float alpha = (1.0f - brightness * BRIGHTNESS_MULTIPLIER) * (1.0f - hardnessFactor * HARDNESS_MULTIPLIER);
             alpha *= ImprintClient.config.alpha / 100.0f;
-            this.setAlpha(alpha);
+            this.setAlpha(Math.max(alpha, 0.15f));
 
             if (ImprintClient.config.rainbowMode) {
                 float hue = (float) (velX * 0.1) % 1.0f;
@@ -74,7 +74,7 @@
         public void tick() {
             this.age++;
 
-            this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime * 9) / 10), this.lifetime / 10));
+            this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
 
             if (this.age >= this.lifetime) {
                 this.remove();

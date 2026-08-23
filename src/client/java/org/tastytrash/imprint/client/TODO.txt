@@ -1,1 +1,1 @@
-choose footprint size instead of scale
+glowstone particles?

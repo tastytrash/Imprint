@@ -7,8 +7,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityTypes;
 //? }
 
+import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 import org.tastytrash.imprint.client.ImprintClient;
+import org.tastytrash.imprint.client.config.ImprintConfig;
 import org.tastytrash.imprint.client.particle.ParticleRegistry;
 
 import java.util.HashMap;
@@ -48,14 +50,15 @@ public class FootprintSizeUtils {
     static {
         // smallest
         register(EntityTypes.FROG, FootprintSize.SMALLEST, 0.20, 2);
-        register(EntityTypes.CAT, FootprintSize.SMALLEST, 0.08, 3);
+        register(EntityTypes.CAT, FootprintSize.SMALLEST, 0.08, 2);
         register(EntityTypes.OCELOT, FootprintSize.SMALLEST, 0.08, 3);
+        register(EntityTypes.CAVE_SPIDER, FootprintSize.SMALLEST, 0.35, 2);
 
         // smaller
         register(EntityTypes.CHICKEN, FootprintSize.SMALLER, 0.06);
         register(EntityTypes.RABBIT, FootprintSize.SMALLER, 0.08);
         register(EntityTypes.FOX, FootprintSize.SMALLER, 0.12, 3);
-        register(EntityTypes.CAVE_SPIDER, FootprintSize.SMALLER, 0.35, 2);
+        register(EntityTypes.SPIDER, FootprintSize.SMALLER, 0.50, 2);
         register(EntityTypes.ENDERMAN, FootprintSize.SMALLER, 0.18);
 
         // small
@@ -64,7 +67,7 @@ public class FootprintSizeUtils {
         register(EntityTypes.WOLF, FootprintSize.SMALL, 0.16, 3);
         register(EntityTypes.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
         register(EntityTypes.GOAT, FootprintSize.SMALL, 0.24, 3);
-        register(EntityTypes.SPIDER, FootprintSize.SMALL, 0.50, 2);
+
         register(EntityTypes.SKELETON, FootprintSize.SMALL, 0.12);
         register(EntityTypes.WITHER_SKELETON, FootprintSize.SMALL, 0.14);
         register(EntityTypes.STRAY, FootprintSize.SMALL, 0.12);
@@ -191,7 +194,23 @@ public class FootprintSizeUtils {
 
     @Nullable
     public static FootprintData getFootprintData(Entity entity) {
-        return ENTITY_FOOTPRINTS.get(entity.getType());
+        FootprintData data = ENTITY_FOOTPRINTS.get(entity.getType());
+        if (data != null && entity instanceof Player) {
+            FootprintSize size = configToFootprintSize(ImprintClient.config.footprintSizes);
+            return new FootprintData(size, ImprintClient.config.footOffset, data.baseTickInterval());
+        }
+        return data;
+    }
+
+    private static FootprintSize configToFootprintSize(ImprintConfig.FootprintSizes configSize) {
+        return switch (configSize) {
+            case Tiny -> FootprintSize.SMALLEST;
+            case Smaller -> FootprintSize.SMALLER;
+            case Small -> FootprintSize.SMALL;
+            case Medium -> FootprintSize.MEDIUM;
+            case Big -> FootprintSize.LARGE;
+            case Large -> FootprintSize.LARGEST;
+        };
     }
 
     public static double getPixelOffset(FootprintSize size) {

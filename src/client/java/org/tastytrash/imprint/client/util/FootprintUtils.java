@@ -3,7 +3,6 @@ package org.tastytrash.imprint.client.util;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -13,7 +12,13 @@ public class FootprintUtils {
 
     public static int calculateDynamicTickInterval(Entity entity, double speed) {
         FootprintSizeUtils.FootprintData data = FootprintSizeUtils.getFootprintData(entity);
-        double baseInterval = (data != null) ? data.baseTickInterval() : ImprintClient.config.tickInterval;
+        double baseInterval;
+
+        if (entity instanceof net.minecraft.world.entity.player.Player) {
+            baseInterval = ImprintClient.config.tickInterval;
+        } else {
+            baseInterval = (data != null) ? data.baseTickInterval() : ImprintClient.config.tickInterval;
+        }
 
         double walkingSpeed = 0.118;
         double speedFactor = Math.max(0.5, walkingSpeed / speed);
