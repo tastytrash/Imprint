@@ -1,16 +1,16 @@
 package org.tastytrash.imprint.particle;
 //? if fabric {
 //? >= 26.1 {
-//import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 //? } else {
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-//? }
+/*import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+*///? }
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 //? }
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.tastytrash.imprint.client.ImprintClient;
 
 public class FabricParticleRegistry {
@@ -28,17 +28,17 @@ public class FabricParticleRegistry {
 		SimpleParticleType type = Registry.register(
 				BuiltInRegistries.PARTICLE_TYPE,
 				//? > 1.20.1 {
-				//ResourceLocation.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
+				Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
 				//? } else {
-				new ResourceLocation(ImprintClient.MOD_ID, name),
-				//? }
+				/*new Identifier(ImprintClient.MOD_ID, name),
+				*///? }
 				FabricParticleTypes.simple(true)
 		);
 		//? >= 26.1 {
-		//ParticleProviderRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
+		ParticleProviderRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
 		//? } else {
-		ParticleFactoryRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
-		//? }
+		/*ParticleFactoryRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
+		*///? }
 		return type;
 	}
 	//? }

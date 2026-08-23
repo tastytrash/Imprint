@@ -2,7 +2,7 @@ package org.tastytrash.imprint;
 
 import org.tastytrash.imprint.platform.Platform;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,19 +44,19 @@ public class Imprint {
 		 *///?}
 	}
 
-	private static ResourceLocation id(String path) {
+	private static Identifier id(String path) {
 		//? > 1.20.1 {
-		 /*return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-		 *///?} <= 1.20.1 {
-		return new ResourceLocation(MOD_ID, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(MOD_ID, path);
+		 //?} <= 1.20.1 {
+		/*return new Identifier(MOD_ID, path);
+		*///?}
 	}
 
-	private static ResourceLocation id(String namespace, String path) {
+	private static Identifier id(String namespace, String path) {
 		//? > 1.20.1 {
-		 /*return ResourceLocation.fromNamespaceAndPath(namespace, path);
-		*///?} <= 1.20.1 {
-		return new ResourceLocation(namespace, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(namespace, path);
+		//?} <= 1.20.1 {
+		/*return new Identifier(namespace, path);
+		*///?}
 	}
 }

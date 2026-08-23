@@ -4,8 +4,8 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import org.tastytrash.imprint.config.ImprintConfig;
 //? if neoforge {
-//import org.tastytrash.imprint.particle.NeoForgeParticleRegistry;
-//? } else {
+/*import org.tastytrash.imprint.particle.NeoForgeParticleRegistry;
+*///? } else {
 import org.tastytrash.imprint.particle.FabricParticleRegistry;
 //? }
 import org.tastytrash.imprint.particle.ParticleRegistry;
@@ -16,8 +16,8 @@ import org.tastytrash.imprint.spawner.FootprintSpawner;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 //? >= 26.1 {
-/^import me.shedaniel.autoconfig.AutoConfigClient;
-^///? }
+import me.shedaniel.autoconfig.AutoConfigClient;
+//? }
 
 *///?}
 
@@ -43,10 +43,10 @@ public class ImprintClient {
 		/*container.registerExtensionPoint(
 				IConfigScreenFactory.class,
 				//? < 26.1 {
-				 (modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				//? } else {
-				/^(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				^///? }
+				 /^(modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				^///? } else {
+				(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				//? }
 		);
 		*///?}
 	}
