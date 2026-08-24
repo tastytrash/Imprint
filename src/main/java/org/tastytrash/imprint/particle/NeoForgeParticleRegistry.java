@@ -29,7 +29,6 @@ public class NeoForgeParticleRegistry {
 
 	@SubscribeEvent
 	public static void onRegisterProviders(RegisterParticleProvidersEvent event) {
-		// Link the shared variables so your footprint spawner loop can see them!
 		ParticleRegistry.FOOTPRINT_SMALLEST = SMALLEST.get();
 		ParticleRegistry.FOOTPRINT_SMALLER = SMALLER.get();
 		ParticleRegistry.FOOTPRINT_SMALL = SMALL.get();
@@ -37,7 +36,6 @@ public class NeoForgeParticleRegistry {
 		ParticleRegistry.FOOTPRINT_LARGE = LARGE.get();
 		ParticleRegistry.FOOTPRINT_LARGEST = LARGEST.get();
 
-		// Register visual factories
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_SMALLEST, sprites -> new FootprintParticle.Factory(sprites, 3/32f));
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_SMALLER, sprites -> new FootprintParticle.Factory(sprites, 4/32f));
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_SMALL, sprites -> new FootprintParticle.Factory(sprites, 5/32f));
@@ -46,5 +44,4 @@ public class NeoForgeParticleRegistry {
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_LARGEST, sprites -> new FootprintParticle.Factory(sprites, 8/32f));
 	}
 }
- 
 *///? }

@@ -30,6 +30,7 @@ serialization-toml = { module = "dev.eav.tomlkt:tomlkt", version.ref = "serializ
 stonecutter = { id = "dev.kikugie.stonecutter", version.ref = "stonecutter" }
 loom-back-compat = { id = "dev.kikugie.loom-back-compat", version.ref = "loomx" }
 neoforged-moddev = { id = "net.neoforged.moddev", version.ref = "neoforge-moddev" }
+legacyforge-moddev = { id = "net.neoforged.moddev.legacyforge", version.ref = "neoforge-moddev" }
 jsonlang-postprocess = { id = "dev.kikugie.postprocess.jsonlang", version.ref = "stonecutter-postprocess" }
 mod-publish-plugin = { id = "me.modmuss50.mod-publish-plugin", version.ref = "mod-publish" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtools-ksp" }

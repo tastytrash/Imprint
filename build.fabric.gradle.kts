@@ -111,3 +111,8 @@ afterEvaluate {
 tasks.build {
 	dependsOn("copyToBuildAll")
 }
+
+tasks.withType<Javadoc>().configureEach {
+	options.encoding = "UTF-8"
+	(options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
+}

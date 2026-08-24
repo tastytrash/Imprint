@@ -3,21 +3,25 @@ package org.tastytrash.imprint.client;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import org.tastytrash.imprint.config.ImprintConfig;
-//? if neoforge {
-/*import org.tastytrash.imprint.particle.NeoForgeParticleRegistry;
-*///? } else {
-import org.tastytrash.imprint.particle.FabricParticleRegistry;
-//? }
-import org.tastytrash.imprint.particle.ParticleRegistry;
+
+//? if fabric {
+/*import org.tastytrash.imprint.particle.FabricParticleRegistry;
+*///? }
 import org.tastytrash.imprint.spawner.FootprintSpawner;
+
+//? if forge {
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.fml.ModLoadingContext;
+//? }
 
 //? if neoforge {
 /*import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 //? >= 26.1 {
-import me.shedaniel.autoconfig.AutoConfigClient;
-//? }
+/^import me.shedaniel.autoconfig.AutoConfigClient;
+^///? }
 
 *///?}
 
@@ -26,14 +30,15 @@ public class ImprintClient {
 
 	public static ImprintConfig config;
 
-	//? if neoforge {
-	/*public static void init(ModContainer container) {
-		*///?} else {
-		public static void init() {
-		//?}
+	//? if neoforge || forge {
+	public static void init(ModContainer container) {
+	//? } else {
+	/*public static void init() {
+	*///?}
+
 		//? fabric {
-		 FabricParticleRegistry.init();
-		//? }
+		 /*FabricParticleRegistry.init();
+		*///? }
 
 		FootprintSpawner.register();
 		AutoConfig.register(ImprintConfig.class, GsonConfigSerializer::new);
@@ -43,11 +48,18 @@ public class ImprintClient {
 		/*container.registerExtensionPoint(
 				IConfigScreenFactory.class,
 				//? < 26.1 {
-				 /^(modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				^///? } else {
-				(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				//? }
+				 (modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				//? } else {
+				/^(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				^///? }
 		);
-		*///?}
+		*///?} else if forge {
+		ModLoadingContext.get().registerExtensionPoint(
+				ConfigScreenHandler.ConfigScreenFactory.class,
+				() -> new ConfigScreenHandler.ConfigScreenFactory((client, parent) ->
+						AutoConfig.getConfigScreen(ImprintConfig.class, parent).get()
+				)
+		);
+		//?}
 	}
 }

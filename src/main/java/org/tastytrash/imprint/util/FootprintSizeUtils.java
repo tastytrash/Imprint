@@ -4,8 +4,8 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 //? if >=26.2 {
-import net.minecraft.world.entity.EntityTypes;
-//? }
+/*import net.minecraft.world.entity.EntityTypes;
+*///? }
 
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
@@ -47,7 +47,7 @@ public class FootprintSizeUtils {
     }
 
     //? if >=26.2 {
-    static {
+    /*static {
         // smallest
         register(EntityTypes.FROG, FootprintSize.SMALLEST, 0.20, 2);
         register(EntityTypes.CAT, FootprintSize.SMALLEST, 0.08, 2);
@@ -113,9 +113,9 @@ public class FootprintSizeUtils {
         register(EntityTypes.SNIFFER, FootprintSize.LARGEST, 0.70, 2);
         register(EntityTypes.WARDEN, FootprintSize.LARGEST, 0.55);
     }
-    //? } else {
+    *///? } else {
 
-    /*static {
+    static {
         // smallest
         register(EntityType.FROG, FootprintSize.SMALLEST, 0.20, 2);
         register(EntityType.CAT, FootprintSize.SMALLEST, 0.08, 3);
@@ -138,12 +138,12 @@ public class FootprintSizeUtils {
         register(EntityType.WITHER_SKELETON, FootprintSize.SMALL, 0.14);
         register(EntityType.STRAY, FootprintSize.SMALL, 0.12);
 		//? > 1.20.1 {
-         register(EntityType.BOGGED, FootprintSize.SMALL, 0.12);
+         /*register(EntityType.BOGGED, FootprintSize.SMALL, 0.12);
 		 register(EntityType.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
-		//? }
+		*///? }
 		//? >=1.21.9 {
-        register(EntityType.COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
-		//? }
+        /*register(EntityType.COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
+		*///? }
 
         // medium
         register(EntityType.PLAYER, FootprintSize.MEDIUM, ImprintClient.config.footOffset);
@@ -185,8 +185,7 @@ public class FootprintSizeUtils {
         register(EntityType.WARDEN, FootprintSize.LARGEST, 0.55);
     }
 
-
-    *///? }
+    //? }
 
     private static void register(EntityType<?> type, FootprintSize size, double footOffset) {
         ENTITY_FOOTPRINTS.put(type, new FootprintData(size, footOffset));

@@ -14,6 +14,6 @@ public interface Platform {
 	}
 
 	enum ModLoader {
-		FABRIC, NEOFORGE
+		FABRIC, NEOFORGE, FORGE
 	}
 }

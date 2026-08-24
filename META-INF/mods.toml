@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/tastytrash/Imprint/issues"
+clientSideOnly = true
+
+[dependencies]
+
+[[dependencies.imprint]]
+modId = "forge"
+side = "BOTH"
+versionRange = "[1,)"
+mandatory = true
+type = "required"
+
+[[dependencies.imprint]]
+modId = "minecraft"
+side = "BOTH"
+versionRange = "1.20.1"
+mandatory = true
+type = "required"
+
+[[mods]]
+modId = "imprint"
+displayName = "Imprint"
+version = "1.2"
+displayURL = "https://github.com/tastytrash/Imprint"
+modUrl = "https://github.com/tastytrash/Imprint"
+logoFile = "assets/icon.png"
+authors = "tastytrash"
+logoBlur = false
+credits = "tastytrash Contributors: "
+description = "Adds customizable vanilla-style footprint particles."
+
+[[mixins]]
+config = "imprint.mixins.json"
+
+[[accessTransformers]]
+file = "aw/1.20.1.cfg"
