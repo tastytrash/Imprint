@@ -60,6 +60,7 @@ public class FootprintSizeUtils {
         register(EntityTypes.CAT, FootprintSize.SMALLEST, 0.08, 2);
         register(EntityTypes.OCELOT, FootprintSize.SMALLEST, 0.08, 3);
         register(EntityTypes.CAVE_SPIDER, FootprintSize.SMALLEST, 0.35, 2);
+        register(EntityTypes.ARMADILLO, FootprintSize.SMALLEST, 0.18, 2);
 
         // smaller
         register(EntityTypes.RABBIT, FootprintSize.SMALLER, 0.08);
@@ -71,7 +72,6 @@ public class FootprintSizeUtils {
         register(EntityTypes.PIG, FootprintSize.SMALL, 0.20, 3);
         register(EntityTypes.SHEEP, FootprintSize.SMALL, 0.22, 3);
         register(EntityTypes.WOLF, FootprintSize.SMALL, 0.16, 3);
-        register(EntityTypes.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
         register(EntityTypes.GOAT, FootprintSize.SMALL, 0.24, 3);
 
         register(EntityTypes.SKELETON, FootprintSize.SMALL, 0.12);
@@ -127,6 +127,9 @@ public class FootprintSizeUtils {
         register(EntityType.FROG, FootprintSize.SMALLEST, 0.20, 2);
         register(EntityType.CAT, FootprintSize.SMALLEST, 0.08, 3);
         register(EntityType.OCELOT, FootprintSize.SMALLEST, 0.08, 3);
+		//? > 1.20.1 {
+		// register(EntityType.ARMADILLO, FootprintSize.SMALLEST, 0.18, 2);
+		//? }
 
         // smaller
         register(EntityType.RABBIT, FootprintSize.SMALLER, 0.08);
@@ -145,7 +148,6 @@ public class FootprintSizeUtils {
         register(EntityType.STRAY, FootprintSize.SMALL, 0.12);
 		//? > 1.20.1 {
          /*register(EntityType.BOGGED, FootprintSize.SMALL, 0.12);
-		 register(EntityType.ARMADILLO, FootprintSize.SMALL, 0.18, 3);
 		*///? }
 		//? >=1.21.9 {
         /*register(EntityType.COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);

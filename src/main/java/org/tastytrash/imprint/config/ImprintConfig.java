@@ -38,7 +38,7 @@ public class ImprintConfig implements ConfigData {
 
 	@ConfigEntry.Category("visuals")
 	@ConfigEntry.Gui.Tooltip
-	public double footprintLifetime = 3.0;
+	public double footprintLifetime = 4.0;
 
 	@ConfigEntry.Category("visuals")
 	@ConfigEntry.Gui.Tooltip
@@ -77,8 +77,8 @@ public class ImprintConfig implements ConfigData {
 
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip
-	@ConfigEntry.BoundedDiscrete(min = 16, max = 256)
-	public int maxRenderDistance = 64;
+	@ConfigEntry.BoundedDiscrete(min = 16, max = 512)
+	public int maxRenderDistance = 96;
 
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip

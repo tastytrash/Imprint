@@ -1,2 +1,3 @@
-custom footprints for certain mobs, also put in config for player
 big mobs should leave dust on every block?
+
+focus on lightweight in readme
