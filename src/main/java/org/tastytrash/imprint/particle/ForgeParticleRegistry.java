@@ -1,7 +1,7 @@
 package org.tastytrash.imprint.particle;
 //? if forge {
 
-/*import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,8 +22,6 @@ public class ForgeParticleRegistry {
 	private static final RegistryObject<SimpleParticleType> MEDIUM = REGISTRY.register("footprint_medium", () -> new SimpleParticleType(true));
 	private static final RegistryObject<SimpleParticleType> LARGE = REGISTRY.register("footprint_large", () -> new SimpleParticleType(true));
 	private static final RegistryObject<SimpleParticleType> LARGEST = REGISTRY.register("footprint_largest", () -> new SimpleParticleType(true));
-	private static final RegistryObject<SimpleParticleType> HORSE = REGISTRY.register("footprint_horse", () -> new SimpleParticleType(true));
-	private static final RegistryObject<SimpleParticleType> CHICKEN = REGISTRY.register("footprint_chicken", () -> new SimpleParticleType(true));
 
 	public static void register(IEventBus modBus) {
 		REGISTRY.register(modBus);
@@ -38,8 +36,6 @@ public class ForgeParticleRegistry {
 		ParticleRegistry.FOOTPRINT_MEDIUM = MEDIUM.get();
 		ParticleRegistry.FOOTPRINT_LARGE = LARGE.get();
 		ParticleRegistry.FOOTPRINT_LARGEST = LARGEST.get();
-		ParticleRegistry.FOOTPRINT_HORSE = HORSE.get();
-		ParticleRegistry.FOOTPRINT_CHICKEN = CHICKEN.get();
 
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_SMALLEST, sprites -> new FootprintParticle.Factory(sprites, 3/32f));
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_SMALLER, sprites -> new FootprintParticle.Factory(sprites, 4/32f));
@@ -47,8 +43,6 @@ public class ForgeParticleRegistry {
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_MEDIUM, sprites -> new FootprintParticle.Factory(sprites, 6/32f));
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_LARGE, sprites -> new FootprintParticle.Factory(sprites, 7/32f));
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_LARGEST, sprites -> new FootprintParticle.Factory(sprites, 8/32f));
-		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_HORSE, sprites -> new FootprintParticle.Factory(sprites, 6/32f));
-		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_CHICKEN, sprites -> new FootprintParticle.Factory(sprites, 4/32f));
 	}
 }
-*///? }
+//? }

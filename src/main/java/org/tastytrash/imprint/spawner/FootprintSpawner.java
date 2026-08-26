@@ -5,8 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 //? > 1.21.1 {
-import net.minecraft.core.particles.ColorParticleOption;
-//? }
+/*import net.minecraft.core.particles.ColorParticleOption;
+*///? }
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
@@ -21,19 +21,19 @@ import org.tastytrash.imprint.client.ImprintClient;
 import org.tastytrash.imprint.util.FootprintSizeUtils;
 
 //? if fabric {
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-//? } else if neoforge {
+/*import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+*///? } else if neoforge {
 /*import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 *///? } else if forge {
-/*import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-*///? }
+//? }
 
 import java.util.Map;
 import java.util.UUID;
@@ -44,8 +44,8 @@ import static org.tastytrash.imprint.util.FootprintUtils.isParticleInsideSolidBl
 //? if neoforge {
 /*@EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
 *///? } else if forge {
-/*@Mod.EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
-*///? }
+@Mod.EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
+//? }
 public class FootprintSpawner {
 	private static final Map<UUID, EntityState> entityStates = Maps.newHashMap();
 
@@ -61,10 +61,10 @@ public class FootprintSpawner {
 
 	public static void register() {
 		//? if fabric {
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+		/*ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			tick(client);
 		});
-		//? }
+		*///? }
 	}
 
 	//? if neoforge {
@@ -74,14 +74,14 @@ public class FootprintSpawner {
 		tick(client);
 	}
 	*///? } else if forge {
-	/*@SubscribeEvent
+	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
 			Minecraft client = Minecraft.getInstance();
 			tick(client);
 		}
 	}
-	*///? }
+	//? }
 
 	public static void tick(Minecraft client) {
 		if (client.level == null
@@ -124,11 +124,11 @@ public class FootprintSpawner {
 
 			double speedThreshold = (entity instanceof Player) ? ImprintClient.config.speedThreshold/20 : 0.01;
 			//? >= 1.21.7 {
-			 double speed = entity.getDeltaMovement().horizontal().length();
-			//? } else {
-			/*Vec3 movement = entity.getDeltaMovement();
+			 /*double speed = entity.getDeltaMovement().horizontal().length();
+			*///? } else {
+			Vec3 movement = entity.getDeltaMovement();
 			double speed = Math.sqrt(movement.x * movement.x + movement.z * movement.z);
-			*///? }
+			//? }
 			boolean isAboveThreshold = speed > speedThreshold;
 
 			if (isOnGround && (ImprintClient.config.showWhileCrouching || !livingEntity.isCrouching())) {
@@ -149,16 +149,16 @@ public class FootprintSpawner {
 
 		entityStates.entrySet().removeIf(entry -> {
 			//? >= 1.21.7 {
-			 Entity entity = client.level.getEntity(entry.getKey());
-			//? } else {
-			/*Entity entity = null;
+			 /*Entity entity = client.level.getEntity(entry.getKey());
+			*///? } else {
+			Entity entity = null;
 			for (Entity e : client.level.entitiesForRendering()) {
 				if (e.getUUID().equals(entry.getKey())) {
 					entity = e;
 					break;
 				}
 			}
-			*///? }
+			//? }
 			return entity == null || !entity.isAlive();
 		});
 	}
@@ -206,8 +206,7 @@ public class FootprintSpawner {
 
 		if (ImprintClient.config.skipCollisionCheck || isParticleInsideSolidBlock(client.level, new Vec3(x, y - 0.01, z), footprintSize.getBaseScale() + 1/8f)) {
 			state.stepCounter++;
-			float yaw = Math.round(entity.getYRot() / 90) * 90;
-			client.level.addParticle(footprintSize.getParticleType(), x, y + yOffset, z, state.wetness, state.stepCounter, yaw);
+			client.level.addParticle(footprintSize.getParticleType(), x, y + yOffset, z, state.wetness, state.stepCounter, 0.0);
 
 			if (ImprintClient.config.enableDustParticles && shouldSpawnDustParticle(block)) {
 				spawnDustParticles(client, entity, block, blockState, blockPos, x, y + yOffset, z);
@@ -222,12 +221,12 @@ public class FootprintSpawner {
 	private static void spawnDustParticles(Minecraft client, LivingEntity entity, Block block, BlockState blockState, BlockPos blockPos, double x, double y, double z) {
 		//? >= 1.21.7 {
 
-		double speed = entity.getDeltaMovement().horizontal().length();
+		/*double speed = entity.getDeltaMovement().horizontal().length();
 
-		//? } else {
-		/*Vec3 movement = entity.getDeltaMovement();
+		*///? } else {
+		Vec3 movement = entity.getDeltaMovement();
 		double speed = Math.sqrt(movement.x * movement.x + movement.z * movement.z);
-		*///? }
+		//? }
 		double speedMultiplier = Math.min(speed * 10, 3.0);
 		int particleCount = 3 + (int) (speedMultiplier * 3);
 
@@ -257,7 +256,7 @@ public class FootprintSpawner {
 
 	//? > 1.21.1 {
 
-	private static boolean isLeafBlock(Block block) {
+	/*private static boolean isLeafBlock(Block block) {
 		return block.equals(Blocks.OAK_LEAVES) || block.equals(Blocks.SPRUCE_LEAVES) ||
 			   block.equals(Blocks.BIRCH_LEAVES) || block.equals(Blocks.JUNGLE_LEAVES) ||
 			   block.equals(Blocks.ACACIA_LEAVES) || block.equals(Blocks.DARK_OAK_LEAVES) ||
@@ -265,7 +264,7 @@ public class FootprintSpawner {
 			   block.equals(Blocks.PALE_OAK_LEAVES);
 	}
 
-	//? }
+	*///? }
 
 	private static boolean shouldSpawnDustParticle(Block block) {
 		return block.equals(Blocks.SAND) || block.equals(Blocks.RED_SAND) ||
@@ -273,28 +272,38 @@ public class FootprintSpawner {
 				block.equals(Blocks.GRAVEL) || block.equals(Blocks.SUSPICIOUS_GRAVEL) ||
 				block.equals(Blocks.SUSPICIOUS_SAND) || block.equals(Blocks.REDSTONE_BLOCK)
 				//? > 1.21.1 {
-				 || isLeafBlock(block);
-				//? } else {
-				/*;
-				*///? }
+				 /*|| isLeafBlock(block);
+				*///? } else {
+				;
+				//? }
 	}
 
 	private static ParticleOptions getParticleForBlock(Block block, BlockState blockState, BlockPos blockPos, Minecraft client) {
 		//? > 1.21.1 {
 
-		if (block.equals(Blocks.PALE_OAK_LEAVES)) {
+		/*if (block.equals(Blocks.PALE_OAK_LEAVES)) {
 			return ParticleTypes.PALE_OAK_LEAVES;
 		} else if (block.equals(Blocks.CHERRY_LEAVES)) {
 			return ParticleTypes.CHERRY_LEAVES;
 		} else if (isLeafBlock(block)) {
 			assert client.level != null;
 			return ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, client.level.getClientLeafTintColor(blockPos));
+		} else if (block.equals(Blocks.SNOW) || block.equals(Blocks.SNOW_BLOCK)) {
+			assert client.level != null;
+			return ParticleTypes.SNOWFLAKE;
 		} else {
 			return new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState);
 		}
 
-		//? } else {
-		/*return new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState);
-		*///? }
+		*///? } else {
+		
+		if (block.equals(Blocks.SNOW) || block.equals(Blocks.SNOW_BLOCK)) {
+			assert client.level != null;
+			return ParticleTypes.SNOWFLAKE;
+		} else {
+			return new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState);
+		}
+
+		//? }
 	}
 }

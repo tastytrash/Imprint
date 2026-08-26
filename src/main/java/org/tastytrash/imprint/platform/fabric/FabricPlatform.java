@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.fabric;
 
 //? fabric {
 
-import org.tastytrash.imprint.platform.Platform;
+/*import org.tastytrash.imprint.platform.Platform;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class FabricPlatform implements Platform {
@@ -27,4 +27,4 @@ public class FabricPlatform implements Platform {
 		return FabricLoader.getInstance().isDevelopmentEnvironment();
 	}
 }
-//?}
+*///?}

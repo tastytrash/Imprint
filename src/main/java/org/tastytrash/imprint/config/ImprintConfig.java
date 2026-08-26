@@ -28,7 +28,7 @@ public class ImprintConfig implements ConfigData {
 	public boolean showWhileCrawling = true;
 
 	public enum FootprintSizes {
-		Tiny, Smaller, Small, Medium, Big, Large, Horse
+		Tiny, Smaller, Small, Medium, Big, Large
 	}
 
 	@ConfigEntry.Category("visuals")
