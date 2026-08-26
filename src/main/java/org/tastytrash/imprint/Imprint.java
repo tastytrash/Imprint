@@ -6,14 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //? fabric {
-/*import org.tastytrash.imprint.platform.fabric.FabricPlatform;
+import org.tastytrash.imprint.platform.fabric.FabricPlatform;
 import net.minecraft.resources.Identifier;
-*///?} neoforge {
+//?} neoforge {
 /*import org.tastytrash.imprint.platform.neoforge.NeoforgePlatform;
 import net.minecraft.resources.Identifier;
  *///?} forge {
-import org.tastytrash.imprint.platform.forge.ForgePlatform;
- //?}
+/*import org.tastytrash.imprint.platform.forge.ForgePlatform;
+ *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
 public class Imprint {
@@ -41,30 +41,30 @@ public class Imprint {
 
 	private static Platform createPlatformInstance() {
 		//? fabric {
-		/*return new FabricPlatform();
-		*///?} neoforge {
+		return new FabricPlatform();
+		//?} neoforge {
 		/*return new NeoforgePlatform();
 		 *///?} forge {
-		return new ForgePlatform();
-		//?}
+		/*return new ForgePlatform();
+		*///?}
 	}
 
 	//? if !forge {
-	/*private static Identifier id(String path) {
+	private static Identifier id(String path) {
 		//? > 1.20.1 {
-		 /^return Identifier.fromNamespaceAndPath(MOD_ID, path);
-		 ^///?} <= 1.20.1 {
-		return new Identifier(MOD_ID, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(MOD_ID, path);
+		 //?} <= 1.20.1 {
+		/*return new Identifier(MOD_ID, path);
+		*///?}
 	}
 
 	private static Identifier id(String namespace, String path) {
 		//? > 1.20.1 {
-		 /^return Identifier.fromNamespaceAndPath(namespace, path);
-		^///?} <= 1.20.1 {
-		return new Identifier(namespace, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(namespace, path);
+		//?} <= 1.20.1 {
+		/*return new Identifier(namespace, path);
+		*///?}
 	}
-	*///? }
+	//? }
 
 }

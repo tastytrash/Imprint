@@ -23,8 +23,12 @@ public class ImprintConfig implements ConfigData {
 	@ConfigEntry.Gui.Tooltip
 	public boolean showWhileCrouching = true;
 
+	@ConfigEntry.Category("general")
+	@ConfigEntry.Gui.Tooltip
+	public boolean showWhileCrawling = true;
+
 	public enum FootprintSizes {
-		Tiny, Smaller, Small, Medium, Big, Large
+		Tiny, Smaller, Small, Medium, Big, Large, Horse
 	}
 
 	@ConfigEntry.Category("visuals")
@@ -66,4 +70,26 @@ public class ImprintConfig implements ConfigData {
 	@ConfigEntry.Category("visuals")
 	@ConfigEntry.Gui.Tooltip
 	public boolean enableDustParticles = true;
+
+	@ConfigEntry.Category("visuals")
+	@ConfigEntry.Gui.Tooltip
+	public boolean enableWetness = true;
+
+	@ConfigEntry.Category("performance")
+	@ConfigEntry.Gui.Tooltip
+	@ConfigEntry.BoundedDiscrete(min = 16, max = 256)
+	public int maxRenderDistance = 64;
+
+	@ConfigEntry.Category("performance")
+	@ConfigEntry.Gui.Tooltip
+	public boolean removeDistantFootprints = true;
+
+	@ConfigEntry.Category("performance")
+	@ConfigEntry.Gui.Tooltip
+	public boolean skipCollisionCheck = false;
+
+	@ConfigEntry.Category("performance")
+	@ConfigEntry.Gui.Tooltip
+	@ConfigEntry.BoundedDiscrete(min = 0, max = 5000)
+	public int maxParticles = 0;
 }

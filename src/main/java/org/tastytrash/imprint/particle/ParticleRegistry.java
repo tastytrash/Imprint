@@ -9,4 +9,7 @@ public class ParticleRegistry {
 	public static SimpleParticleType FOOTPRINT_MEDIUM;
 	public static SimpleParticleType FOOTPRINT_LARGE;
 	public static SimpleParticleType FOOTPRINT_LARGEST;
+
+	public static SimpleParticleType FOOTPRINT_HORSE;
+	public static SimpleParticleType FOOTPRINT_CHICKEN;
 }
