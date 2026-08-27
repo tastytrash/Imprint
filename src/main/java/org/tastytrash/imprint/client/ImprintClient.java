@@ -5,15 +5,15 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import org.tastytrash.imprint.config.ImprintConfig;
 
 //? if fabric {
-import org.tastytrash.imprint.particle.FabricParticleRegistry;
-//? }
+/*import org.tastytrash.imprint.particle.FabricParticleRegistry;
+*///? }
 import org.tastytrash.imprint.spawner.FootprintSpawner;
 
 //? if forge {
-/*import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
-*///? }
+//? }
 
 //? if neoforge {
 /*import net.neoforged.fml.ModContainer;
@@ -31,14 +31,14 @@ public class ImprintClient {
 	public static ImprintConfig config;
 
 	//? if neoforge || forge {
-	/*public static void init(ModContainer container) {
-	*///? } else {
-	public static void init() {
-	//?}
+	public static void init(ModContainer container) {
+	//? } else {
+	/*public static void init() {
+	*///?}
 
 		//? fabric {
-		 FabricParticleRegistry.init();
-		//? }
+		 /*FabricParticleRegistry.init();
+		*///? }
 
 		FootprintSpawner.register();
 		AutoConfig.register(ImprintConfig.class, GsonConfigSerializer::new);
@@ -54,12 +54,12 @@ public class ImprintClient {
 				^///? }
 		);
 		*///?} else if forge {
-		/*ModLoadingContext.get().registerExtensionPoint(
+		ModLoadingContext.get().registerExtensionPoint(
 				ConfigScreenHandler.ConfigScreenFactory.class,
 				() -> new ConfigScreenHandler.ConfigScreenFactory((client, parent) ->
 						AutoConfig.getConfigScreen(ImprintConfig.class, parent).get()
 				)
 		);
-		*///?}
+		//?}
 	}
 }

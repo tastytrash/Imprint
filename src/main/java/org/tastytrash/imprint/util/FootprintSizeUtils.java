@@ -4,16 +4,16 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 //? if >=26.2 {
-import static net.minecraft.world.entity.EntityTypes.*;
-//? } else {
+/*import static net.minecraft.world.entity.EntityTypes.*;
+*///? } else {
 import static net.minecraft.world.entity.EntityType.*;
 //? }
 
 //? if >= 26.1 {
-import net.minecraft.world.entity.monster.zombie.Zombie;
-//? } else {
-/*import net.minecraft.world.entity.monster.Zombie;
-*///? }
+/*import net.minecraft.world.entity.monster.zombie.Zombie;
+*///? } else {
+import net.minecraft.world.entity.monster.Zombie;
+//? }
 
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
@@ -62,15 +62,15 @@ public class FootprintSizeUtils {
         register(OCELOT, FootprintSize.SMALLEST, 0.08, 3);
         register(CAVE_SPIDER, FootprintSize.SMALLEST, 0.35, 2);
         //? > 1.20.1 {
-        register(ARMADILLO, FootprintSize.SMALLEST, 0.18, 2);
-        //? }
+        /*register(ARMADILLO, FootprintSize.SMALLEST, 0.18, 2);
+        *///? }
 
         // smaller
         register(RABBIT, FootprintSize.SMALLER, 0.08);
         register(FOX, FootprintSize.SMALLER, 0.12, 3);
         //? if >=26.2 {
-        register(SPIDER, FootprintSize.SMALLER, 0.50, 2);
-        //? } else {
+        /*register(SPIDER, FootprintSize.SMALLER, 0.50, 2);
+        *///? } else {
         register(CAVE_SPIDER, FootprintSize.SMALLER, 0.35, 2);
         register(SPIDER, FootprintSize.SMALL, 0.50, 2);
         //? }
@@ -87,11 +87,11 @@ public class FootprintSizeUtils {
         register(WITHER_SKELETON, FootprintSize.SMALL, 0.14);
         register(STRAY, FootprintSize.SMALL, 0.12);
         //? > 1.20.1 {
-        register(BOGGED, FootprintSize.SMALL, 0.12);
-        //? }
+        /*register(BOGGED, FootprintSize.SMALL, 0.12);
+        *///? }
         //? >=1.21.9 {
-        register(COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
-        //? }
+        /*register(COPPER_GOLEM, FootprintSize.SMALL, 0.20, 5);
+        *///? }
 
         // medium
         register(PLAYER, FootprintSize.MEDIUM, ImprintClient.config.footOffset);

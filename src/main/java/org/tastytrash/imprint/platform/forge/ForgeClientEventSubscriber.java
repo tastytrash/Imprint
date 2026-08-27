@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.forge;
 
 //? forge {
 
-/*import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -14,4 +14,4 @@ public class ForgeClientEventSubscriber {
 		event.enqueueWork(Imprint::onInitializeClient);
 	}
 }
-*///?}
+//?}

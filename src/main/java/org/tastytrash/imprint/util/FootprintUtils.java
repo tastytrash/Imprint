@@ -20,8 +20,8 @@ public class FootprintUtils {
             baseInterval = (data != null) ? data.baseTickInterval() : ImprintClient.config.tickInterval;
         }
 
-        double walkingSpeed = 0.118;
-        double speedFactor = Math.max(0.5, walkingSpeed / speed);
+        double baseWalkingSpeed = 0.118;
+        double speedFactor = Math.max(0.5, baseWalkingSpeed / speed);
         return (int) Math.max(1, baseInterval * speedFactor);
     }
 
