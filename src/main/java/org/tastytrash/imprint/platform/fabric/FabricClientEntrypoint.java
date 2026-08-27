@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.fabric;
 
 //? fabric {
 
-/*import org.tastytrash.imprint.Imprint;
+import org.tastytrash.imprint.Imprint;
 import org.tastytrash.imprint.client.ImprintClient;
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint;
 import net.fabricmc.api.ClientModInitializer;
@@ -17,4 +17,4 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 	}
 
 }
-*///?}
+//?}

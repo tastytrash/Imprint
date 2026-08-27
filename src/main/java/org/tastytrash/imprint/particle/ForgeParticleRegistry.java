@@ -1,7 +1,7 @@
 package org.tastytrash.imprint.particle;
 //? if forge {
 
-import net.minecraft.core.particles.ParticleType;
+/*import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -45,4 +45,4 @@ public class ForgeParticleRegistry {
 		event.registerSpriteSet(ParticleRegistry.FOOTPRINT_LARGEST, sprites -> new FootprintParticle.Factory(sprites, 8/32f));
 	}
 }
-//? }
+*///? }

@@ -7,18 +7,18 @@
 ###### _shaders used in GIFs, not included with the mod_
 
 ####   
-A client-side mod that adds vanilla-style footprint particles. Shows footprints for you, other players, and mobs as they walk around.
+A lightweight client-side mod that adds vanilla-style footprint particles. Shows footprints for you, other players, and mobs as they walk around.
 
 ## Features
 
-*   Footprints for players and mobs with mob-specific spacing
+*   Footprints for players and mobs with mob-specific spacing/timing
 *   Dust, snow, and leaf particles on certain blocks
 *   Configurable color, size, alpha, and lifetime
 *   Toggle for other players and mobs
-*   Very configurable
+*   Performance options
 *   And more
 
-![Config menu](https://cdn.modrinth.com/data/cached_images/06df7cd305476ad21e1bfabba5fbfc8d8efeccfe.png)
+![Config menu](https://cdn.modrinth.com/data/cached_images/a313f913325d7f8eec24ff4d0fead018bb48c76f.gif)
 
 ## Dependencies
 
