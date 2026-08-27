@@ -15,6 +15,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -22,16 +23,16 @@ import org.joml.Quaternionf;
 import org.tastytrash.imprint.client.ImprintClient;
 
 //? < 26.1 {
- import net.minecraft.client.renderer.RenderType;
-//? }
+ /*import net.minecraft.client.renderer.RenderType;
+*///? }
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class FootprintParticle extends SingleQuadParticle {
 	private final SpriteSet sprites;
-	private static final List<FootprintParticle> SPAWNED_FOOTPRINTS = new ArrayList<>();
+	private static final Deque<FootprintParticle> SPAWNED_FOOTPRINTS = new ArrayDeque<>();
 
 	private static final float BRIGHTNESS_MULTIPLIER = 0.6f;
 	private static final float HARDNESS_OFFSET = 0.5f;
@@ -40,10 +41,10 @@ public class FootprintParticle extends SingleQuadParticle {
 
 	public FootprintParticle(ClientLevel level, double x, double y, double z, double velX, double velY, double velZ, float yaw, SpriteSet sprites, float size, float alphaOffset) {
 		//? < 26.1 {
-		 super(level, x, y, z);
-		//? } else {
-		/*super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-		*///? }
+		 /*super(level, x, y, z);
+		*///? } else {
+		super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
+		//? }
 
 		this.sprites = sprites;
 		this.lifetime = Mth.abs((int) (ImprintClient.config.footprintLifetime * 20));
@@ -52,6 +53,7 @@ public class FootprintParticle extends SingleQuadParticle {
 
 		BlockPos pos = BlockPos.containing(x, y - 0.01, z);
 		BlockState state = level.getBlockState(pos);
+
 		int blockColor = state.getMapColor(level, pos).col;
 		float r = ((blockColor >> 16) & 0xFF) / 255.0f;
 		float g = ((blockColor >> 8) & 0xFF) / 255.0f;
@@ -64,6 +66,11 @@ public class FootprintParticle extends SingleQuadParticle {
 		alpha *= ImprintClient.config.alpha / 100.0f;
 		alpha *= (1.0f + alphaOffset * 0.5f);
 		this.setAlpha(Mth.clamp(alpha, 0.15f, 1.0f));
+
+		if (state.getBlock().equals(Blocks.AIR)) {
+			this.setAlpha(0.0f);
+			this.remove();
+		}
 
 		if (ImprintClient.config.rainbowMode) {
 			float hue = (float) (velY * 0.1) % 1.0f;
@@ -91,10 +98,10 @@ public class FootprintParticle extends SingleQuadParticle {
 
 		int maxParticles = ImprintClient.config.maxParticles;
 		if (maxParticles > 0) {
-			SPAWNED_FOOTPRINTS.add(this);
+			SPAWNED_FOOTPRINTS.addLast(this);
 
-			while (SPAWNED_FOOTPRINTS.size() > maxParticles) {
-				FootprintParticle oldest = SPAWNED_FOOTPRINTS.remove(0);
+			if (SPAWNED_FOOTPRINTS.size() > maxParticles) {
+				FootprintParticle oldest = SPAWNED_FOOTPRINTS.removeFirst();
 				oldest.remove();
 			}
 		}
@@ -104,8 +111,8 @@ public class FootprintParticle extends SingleQuadParticle {
 	public void tick() {
 		this.age++;
 		//? >= 26.1 {
-		/*this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
-		*///? }
+		this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
+		//? }
 		if (this.age >= this.lifetime) {
 			this.remove();
 			SPAWNED_FOOTPRINTS.remove(this);
@@ -122,20 +129,20 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 
 	//? >= 26.1 {
-	/*@Override
+	@Override
 	protected Layer getLayer() {
 		return Layer.TRANSLUCENT;
 	}
-	*///? }
+	//? }
 
 	//? > 1.20.1 {
-	/*@Override
+	@Override
 	public FacingCameraMode getFacingCameraMode() {
 		return (target, camera, partialTickTime) -> target.rotationX(-Mth.PI/2);
 	}
 
-	*///? } else {
-	@Override
+	//? } else {
+	/*@Override
 	public void render(com.mojang.blaze3d.vertex.VertexConsumer buffer, Camera camera, float partialTicks) {
 		Vec3 cameraPos = camera.getPosition();
 		float x = (float) (Mth.lerp(partialTicks, this.xo, this.x) - cameraPos.x());
@@ -150,10 +157,10 @@ public class FootprintParticle extends SingleQuadParticle {
 		buffer.vertex(x + size, y, z + size).uv(this.getU0(), this.getV0()).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(light).endVertex();
 		buffer.vertex(x + size, y, z - size).uv(this.getU0(), this.getV1()).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(light).endVertex();
 	}
-	//? }
+	*///? }
 
 	//? < 26.1 {
-	@Override
+	/*@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
 	}
@@ -177,7 +184,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	protected float getV1() {
 		return this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5).getV1();
 	}
-	//? }
+	*///? }
 
 	//? >= 26.1 && fabric {
 	/*@Environment(EnvType.CLIENT)
@@ -205,7 +212,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 
 	*///? } else if neoforge || forge && < 26.1 {
-	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+	/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
 		public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
@@ -213,8 +220,8 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(clientLevel, d, e, f, g, h, i, 0.0f, sprites, size, alphaOffset);
 		}
 	}
-	//? } else if neoforge {
-		/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+	*///? } else if neoforge {
+		public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
 		public @org.jspecify.annotations.Nullable Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double v, double v1, double v2, double v3, double v4, double v5, RandomSource randomSource) {
@@ -223,5 +230,5 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(clientLevel, v, v1, v2, v3, v4, v5, yaw, sprites, size, alphaOffset);
 		}
 	}
-	*///? }
+	//? }
 }

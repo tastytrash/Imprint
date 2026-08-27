@@ -9,17 +9,17 @@ import org.slf4j.LoggerFactory;
 /*import org.tastytrash.imprint.platform.fabric.FabricPlatform;
 import net.minecraft.resources.Identifier;
 *///?} neoforge {
-/*import org.tastytrash.imprint.platform.neoforge.NeoforgePlatform;
+import org.tastytrash.imprint.platform.neoforge.NeoforgePlatform;
 import net.minecraft.resources.Identifier;
- *///?} forge {
-import org.tastytrash.imprint.platform.forge.ForgePlatform;
- //?}
+ //?} forge {
+/*import org.tastytrash.imprint.platform.forge.ForgePlatform;
+ *///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
 public class Imprint {
 
 	public static final String MOD_ID = /*$ mod_id*/ "imprint";
-	public static final String MOD_VERSION = /*$ mod_version*/ "1.3";
+	public static final String MOD_VERSION = /*$ mod_version*/ "1.4";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "Imprint";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -43,28 +43,28 @@ public class Imprint {
 		//? fabric {
 		/*return new FabricPlatform();
 		*///?} neoforge {
-		/*return new NeoforgePlatform();
-		 *///?} forge {
-		return new ForgePlatform();
-		//?}
+		return new NeoforgePlatform();
+		 //?} forge {
+		/*return new ForgePlatform();
+		*///?}
 	}
 
 	//? if !forge {
-	/*private static Identifier id(String path) {
+	private static Identifier id(String path) {
 		//? > 1.20.1 {
-		 /^return Identifier.fromNamespaceAndPath(MOD_ID, path);
-		 ^///?} <= 1.20.1 {
-		return new Identifier(MOD_ID, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(MOD_ID, path);
+		 //?} <= 1.20.1 {
+		/*return new Identifier(MOD_ID, path);
+		*///?}
 	}
 
 	private static Identifier id(String namespace, String path) {
 		//? > 1.20.1 {
-		 /^return Identifier.fromNamespaceAndPath(namespace, path);
-		^///?} <= 1.20.1 {
-		return new Identifier(namespace, path);
-		//?}
+		 return Identifier.fromNamespaceAndPath(namespace, path);
+		//?} <= 1.20.1 {
+		/*return new Identifier(namespace, path);
+		*///?}
 	}
-	*///? }
+	//? }
 
 }

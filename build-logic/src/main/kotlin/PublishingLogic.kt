@@ -77,7 +77,10 @@ fun Project.configureModPublishing(ctx: Context) {
 		additionalFiles.from(srcJarTask.flatMap(Jar::getArchiveFile))
 		type = releaseType
 		version = ctx.fullVersion
-		changelog.set(rootProject.file("CHANGELOG.md").readText())
+
+		val manualChangelog = env("PUB_CHANGELOG")
+		changelog.set(manualChangelog ?: rootProject.file("CHANGELOG.md").readText())
+
 		modLoaders.add(ctx.loader.id)
 
 		displayName =
@@ -113,6 +116,10 @@ private fun ModPublishExtension.modrinth(
 	this.accessToken = accessToken
 	minecraftVersions.addAll(listOf(ctx.currentMcVersion) + additionalVersions)
 
+	// Platform-specific formatting for Modrinth
+	version = "v${ctx.basicVersion}-${ctx.loader.id}+${ctx.currentMcVersion}"
+	displayName = "${ctx.modName} v${ctx.basicVersion} (${ctx.loader.id.replaceFirstChar(Char::titlecase)} ${ctx.currentMcVersion})"
+
 	if (!staging) {
 		val platform = this
 		project.afterEvaluate {
@@ -135,6 +142,8 @@ private fun ModPublishExtension.curseforge(
 
 	this.accessToken = accessToken
 	minecraftVersions.addAll(listOf(ctx.currentMcVersion) + additionalVersions)
+
+	displayName = "[${ctx.loader.id.replaceFirstChar(Char::titlecase)} ${ctx.currentMcVersion}] v${ctx.basicVersion}"
 
 	val platform = this
 	project.afterEvaluate {

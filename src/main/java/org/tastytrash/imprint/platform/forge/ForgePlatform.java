@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.forge;
 
 //? forge {
 
-import org.tastytrash.imprint.platform.Platform;
+/*import org.tastytrash.imprint.platform.Platform;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 
@@ -28,4 +28,4 @@ public class ForgePlatform implements Platform {
 		return !FMLLoader.isProduction();
 	}
 }
-//?}
+*///?}

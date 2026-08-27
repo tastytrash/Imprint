@@ -6,6 +6,11 @@ plugins {
 stonecutter {
 	val (version, loader) = current.project.split('-', limit = 2)
 	properties.tags(version, loader)
+
+	replacements.string(current.parsed < "1.21.11") {
+		replace("Identifier", "ResourceLocation")
+		replace("identifier()", "location()")
+	}
 }
 
 platform {
@@ -61,7 +66,7 @@ repositories {
 
 dependencies {
 	annotationProcessor("org.spongepowered:mixin:${libs.versions.mixin.get()}:processor")
-	implementation("me.shedaniel.cloth:cloth-config-forge:${prop("deps.cloth_config")}")
+	modImplementation("me.shedaniel.cloth:cloth-config-forge:${prop("deps.cloth_config")}")
 }
 
 sourceSets {

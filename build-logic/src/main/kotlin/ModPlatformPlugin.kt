@@ -1,5 +1,6 @@
 import dev.kikugie.fletching_table.extension.FletchingTableExtension
 import org.gradle.api.DefaultTask
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
@@ -9,6 +10,7 @@ import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
@@ -101,6 +103,9 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 			withJavadocJar()
 			sourceCompatibility = ctx.javaVersion
 			targetCompatibility = ctx.javaVersion
+			toolchain {
+				languageVersion.set(JavaLanguageVersion.of(ctx.javaVersion.majorVersion))
+			}
 		}
 	}
 

@@ -8,11 +8,12 @@ import net.minecraft.resources.Identifier;
 import org.tastytrash.imprint.client.ImprintClient;
 
 //? >= 26.1 {
-/^import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
-^///? } else {
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-//? }
+import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
+//? } else {
+/^import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+^///? }
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
+import org.tastytrash.imprint.util.FootprintUtil;
 *///? }
 
 public class FabricParticleRegistry {
@@ -24,23 +25,25 @@ public class FabricParticleRegistry {
 		ParticleRegistry.FOOTPRINT_MEDIUM = register("footprint_medium", 6/32f);
 		ParticleRegistry.FOOTPRINT_LARGE = register("footprint_large", 7/32f);
 		ParticleRegistry.FOOTPRINT_LARGEST = register("footprint_largest", 8/32f);
+
+		FootprintUtil.loadFromJson();
 	}
 
 	private static SimpleParticleType register(String name, float size) {
 		SimpleParticleType type = Registry.register(
 				BuiltInRegistries.PARTICLE_TYPE,
 				//? > 1.20.1 {
-				/^Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
-				^///? } else {
-				new Identifier(ImprintClient.MOD_ID, name),
-				//? }
+				Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
+				//? } else {
+				/^new Identifier(ImprintClient.MOD_ID, name),
+				^///? }
 				FabricParticleTypes.simple(true)
 		);
 		//? >= 26.1 {
-		/^ParticleProviderRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
-		^///? } else {
-		ParticleFactoryRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
-		//? }
+		ParticleProviderRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
+		//? } else {
+		/^ParticleFactoryRegistry.getInstance().register(type, sprites -> new FootprintParticle.Factory(sprites, size));
+		^///? }
 		return type;
 	}
 	*///? }

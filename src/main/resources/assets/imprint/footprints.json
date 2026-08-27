@@ -1,0 +1,258 @@
+{
+  "ignored_entities": [
+    "minecraft:allay",
+    "minecraft:bat",
+    "minecraft:bee",
+    "minecraft:blaze",
+    "minecraft:breeze",
+    "minecraft:cod",
+    "minecraft:dolphin",
+    "minecraft:elder_guardian",
+    "minecraft:ender_dragon",
+    "minecraft:endermite",
+    "minecraft:ghast",
+    "minecraft:glow_squid",
+    "minecraft:guardian",
+    "minecraft:magma_cube",
+    "minecraft:parrot",
+    "minecraft:phantom",
+    "minecraft:pufferfish",
+    "minecraft:salmon",
+    "minecraft:shulker",
+    "minecraft:silverfish",
+    "minecraft:slime",
+    "minecraft:snow_golem",
+    "minecraft:squid",
+    "minecraft:tadpole",
+    "minecraft:tropical_fish",
+    "minecraft:vex",
+    "minecraft:wither"
+  ],
+  "entities": {
+    "minecraft:chicken": {
+      "size": "smallest",
+      "foot_offset": 0.08,
+      "tick_interval": 4
+    },
+    "minecraft:frog": {
+      "size": "smallest",
+      "foot_offset": 0.20,
+      "tick_interval": 2
+    },
+    "minecraft:cat": {
+      "size": "smallest",
+      "foot_offset": 0.08,
+      "tick_interval": 2
+    },
+    "minecraft:ocelot": {
+      "size": "smallest",
+      "foot_offset": 0.08,
+      "tick_interval": 3
+    },
+    "minecraft:cave_spider": {
+      "size": "smallest",
+      "foot_offset": 0.35,
+      "tick_interval": 2
+    },
+    "minecraft:rabbit": {
+      "size": "smaller",
+      "foot_offset": 0.08
+    },
+    "minecraft:fox": {
+      "size": "smaller",
+      "foot_offset": 0.12,
+      "tick_interval": 3
+    },
+    "minecraft:spider": {
+      "size": "smaller",
+      "foot_offset": 0.50,
+      "tick_interval": 2
+    },
+    "minecraft:enderman": {
+      "size": "smaller",
+      "foot_offset": 0.18
+    },
+    "minecraft:pig": {
+      "size": "small",
+      "foot_offset": 0.20,
+      "tick_interval": 3
+    },
+    "minecraft:sheep": {
+      "size": "small",
+      "foot_offset": 0.22,
+      "tick_interval": 3
+    },
+    "minecraft:wolf": {
+      "size": "small",
+      "foot_offset": 0.16,
+      "tick_interval": 3
+    },
+    "minecraft:goat": {
+      "size": "small",
+      "foot_offset": 0.24,
+      "tick_interval": 3
+    },
+    "minecraft:skeleton": {
+      "size": "small",
+      "foot_offset": 0.12
+    },
+    "minecraft:creeper": {
+      "size": "small",
+      "foot_offset": 0.20,
+      "tick_interval": 2
+    },
+    "minecraft:wither_skeleton": {
+      "size": "small",
+      "foot_offset": 0.14
+    },
+    "minecraft:stray": {
+      "size": "small",
+      "foot_offset": 0.12
+    },
+    "minecraft:player": {
+      "size": "medium",
+      "foot_offset": 0.2
+    },
+    "minecraft:cow": {
+      "size": "medium",
+      "foot_offset": 0.28,
+      "tick_interval": 3
+    },
+    "minecraft:mooshroom": {
+      "size": "medium",
+      "foot_offset": 0.28,
+      "tick_interval": 3
+    },
+    "minecraft:zombie": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:husk": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:drowned": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:villager": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:zombie_villager": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:wandering_trader": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:pillager": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:vindicator": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:witch": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:evoker": {
+      "size": "medium",
+      "foot_offset": 0.16
+    },
+    "minecraft:piglin": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:piglin_brute": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:zombified_piglin": {
+      "size": "medium",
+      "foot_offset": 0.30
+    },
+    "minecraft:horse": {
+      "size": "medium",
+      "foot_offset": 0.35,
+      "tick_interval": 3
+    },
+    "minecraft:donkey": {
+      "size": "medium",
+      "foot_offset": 0.30,
+      "tick_interval": 3
+    },
+    "minecraft:mule": {
+      "size": "medium",
+      "foot_offset": 0.32,
+      "tick_interval": 3
+    },
+    "minecraft:skeleton_horse": {
+      "size": "medium",
+      "foot_offset": 0.35,
+      "tick_interval": 3
+    },
+    "minecraft:zombie_horse": {
+      "size": "medium",
+      "foot_offset": 0.35,
+      "tick_interval": 3
+    },
+    "minecraft:llama": {
+      "size": "medium",
+      "foot_offset": 0.32,
+      "tick_interval": 3
+    },
+    "minecraft:trader_llama": {
+      "size": "medium",
+      "foot_offset": 0.32,
+      "tick_interval": 3
+    },
+    "minecraft:camel": {
+      "size": "large",
+      "foot_offset": 0.48,
+      "tick_interval": 4
+    },
+    "minecraft:panda": {
+      "size": "large",
+      "foot_offset": 0.42,
+      "tick_interval": 3
+    },
+    "minecraft:polar_bear": {
+      "size": "large",
+      "foot_offset": 0.45,
+      "tick_interval": 4
+    },
+    "minecraft:hoglin": {
+      "size": "large",
+      "foot_offset": 0.40,
+      "tick_interval": 3
+    },
+    "minecraft:zoglin": {
+      "size": "large",
+      "foot_offset": 0.40,
+      "tick_interval": 3
+    },
+    "minecraft:iron_golem": {
+      "size": "large",
+      "foot_offset": 0.52,
+      "tick_interval": 8
+    },
+    "minecraft:ravager": {
+      "size": "largest",
+      "foot_offset": 0.75,
+      "tick_interval": 4
+    },
+    "minecraft:sniffer": {
+      "size": "largest",
+      "foot_offset": 0.70,
+      "tick_interval": 2
+    },
+    "minecraft:warden": {
+      "size": "largest",
+      "foot_offset": 0.55
+    }
+  }
+}

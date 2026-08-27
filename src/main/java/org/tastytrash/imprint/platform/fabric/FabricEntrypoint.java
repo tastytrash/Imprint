@@ -12,7 +12,6 @@ public class FabricEntrypoint implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Imprint.onInitialize();
-//		FabricEventSubscriber.registerEvents();
 	}
 }
 *///?}

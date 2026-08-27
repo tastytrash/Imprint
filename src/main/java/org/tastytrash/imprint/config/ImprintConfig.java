@@ -61,7 +61,7 @@ public class ImprintConfig implements ConfigData {
 
 	@ConfigEntry.Category("movement")
 	@ConfigEntry.Gui.Tooltip
-	public double speedThreshold = 0.6;
+	public double speedThreshold = 1.2;
 
 	@ConfigEntry.Category("movement")
 	@ConfigEntry.Gui.Tooltip
@@ -78,7 +78,7 @@ public class ImprintConfig implements ConfigData {
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip
 	@ConfigEntry.BoundedDiscrete(min = 16, max = 512)
-	public int maxRenderDistance = 96;
+	public int maxRenderDistance = 48;
 
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip
@@ -86,10 +86,14 @@ public class ImprintConfig implements ConfigData {
 
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip
+	public boolean simplifiedCollisionCheck = false;
+
+	@ConfigEntry.Category("performance")
+	@ConfigEntry.Gui.Tooltip
 	public boolean skipCollisionCheck = false;
 
 	@ConfigEntry.Category("performance")
 	@ConfigEntry.Gui.Tooltip
-	@ConfigEntry.BoundedDiscrete(min = 0, max = 5000)
-	public int maxParticles = 0;
+	@ConfigEntry.BoundedDiscrete(min = 0, max = 2000)
+	public int maxParticles = 150;
 }
