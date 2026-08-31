@@ -3,7 +3,7 @@ package org.tastytrash.imprint.util;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,10 +17,10 @@ import org.tastytrash.imprint.config.ImprintConfig;
 import org.tastytrash.imprint.particle.ParticleRegistry;
 
 //? >= 26.1 {
-import net.minecraft.world.entity.monster.zombie.Zombie;
-//? } else {
-/*import net.minecraft.world.entity.monster.Zombie;
-*///? }
+/*import net.minecraft.world.entity.monster.zombie.Zombie;
+*///? } else {
+import net.minecraft.world.entity.monster.Zombie;
+//? }
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class FootprintUtil {
-    private static final Map<Identifier, FootprintData> ENTITY_FOOTPRINTS = new HashMap<>();
-    private static final Set<Identifier> IGNORED_ENTITIES = new HashSet<>();
+    private static final Map<ResourceLocation, FootprintData> ENTITY_FOOTPRINTS = new HashMap<>();
+    private static final Set<ResourceLocation> IGNORED_ENTITIES = new HashSet<>();
 
     public record FootprintData(FootprintSize size, double footOffset, int baseTickInterval) {}
 
@@ -57,11 +57,11 @@ public class FootprintUtil {
         FootprintDataLoader.load();
     }
 
-    public static void registerData(Identifier entityId, FootprintData data) {
+    public static void registerData(ResourceLocation entityId, FootprintData data) {
         ENTITY_FOOTPRINTS.put(entityId, data);
     }
 
-    public static void registerIgnoredEntity(Identifier entityId) {
+    public static void registerIgnoredEntity(ResourceLocation entityId) {
         IGNORED_ENTITIES.add(entityId);
     }
 
@@ -69,7 +69,7 @@ public class FootprintUtil {
     public static FootprintData getFootprintData(Entity entity) {
         if (shouldIgnoreEntity(entity)) return null;
 
-        Identifier entityId = EntityType.getKey(entity.getType());
+        ResourceLocation entityId = EntityType.getKey(entity.getType());
         FootprintData data = ENTITY_FOOTPRINTS.get(entityId);
 
         if (data == null) {
@@ -91,7 +91,7 @@ public class FootprintUtil {
     private static boolean shouldIgnoreEntity(Entity entity) {
         if (!(entity instanceof LivingEntity)) return true;
 
-        Identifier entityId = EntityType.getKey(entity.getType());
+        ResourceLocation entityId = EntityType.getKey(entity.getType());
 
         if (IGNORED_ENTITIES.contains(entityId)) return true;
 

@@ -5,8 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 //? > 1.21.1 {
-import net.minecraft.core.particles.ColorParticleOption;
-//? }
+/*import net.minecraft.core.particles.ColorParticleOption;
+*///? }
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -24,16 +24,16 @@ import org.tastytrash.imprint.util.FootprintUtil;
 //? if fabric {
 /*import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 *///? } else if neoforge {
-import net.neoforged.fml.common.EventBusSubscriber;
+/*import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-//? } else if forge {
-/*import net.minecraftforge.api.distmarker.Dist;
+*///? } else if forge {
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-*///? }
+//? }
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
@@ -43,10 +43,10 @@ import static org.tastytrash.imprint.util.FootprintUtil.calculateDynamicTickInte
 import static org.tastytrash.imprint.util.FootprintUtil.isParticleInsideSolidBlock;
 
 //? if neoforge {
-@EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
-//? } else if forge {
-/*@Mod.EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
-*///? }
+/*@EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
+*///? } else if forge {
+@Mod.EventBusSubscriber(modid = ImprintClient.MOD_ID, value = Dist.CLIENT)
+//? }
 public class FootprintSpawner {
 	private static final Map<UUID, EntityState> entityStates = Maps.newHashMap();
 	private static int cleanupCounter = 0;
@@ -74,20 +74,20 @@ public class FootprintSpawner {
 	}
 
 	//? if neoforge {
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public static void onTick(ClientTickEvent.Post event) {
 		Minecraft client = Minecraft.getInstance();
 		tick(client);
 	}
-	//? } else if forge {
-	/*@SubscribeEvent
+	*///? } else if forge {
+	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
 			Minecraft client = Minecraft.getInstance();
 			tick(client);
 		}
 	}
-	*///? }
+	//? }
 
 	public static void tick(Minecraft client) {
 		if (client.level == null
@@ -268,7 +268,7 @@ public class FootprintSpawner {
 
 	//? > 1.21.1 {
 
-	private static boolean isLeafBlock(Block block) {
+	/*private static boolean isLeafBlock(Block block) {
 		return block.equals(Blocks.OAK_LEAVES) || block.equals(Blocks.SPRUCE_LEAVES) ||
 			   block.equals(Blocks.BIRCH_LEAVES) || block.equals(Blocks.JUNGLE_LEAVES) ||
 			   block.equals(Blocks.ACACIA_LEAVES) || block.equals(Blocks.DARK_OAK_LEAVES) ||
@@ -276,7 +276,7 @@ public class FootprintSpawner {
 			   block.equals(Blocks.PALE_OAK_LEAVES);
 	}
 
-	//? }
+	*///? }
 
 	private static boolean shouldSpawnDustParticle(Block block) {
 		return block.equals(Blocks.SAND) || block.equals(Blocks.RED_SAND) ||
@@ -284,16 +284,16 @@ public class FootprintSpawner {
 				block.equals(Blocks.GRAVEL) || block.equals(Blocks.SUSPICIOUS_GRAVEL) ||
 				block.equals(Blocks.SUSPICIOUS_SAND) || block.equals(Blocks.REDSTONE_BLOCK)
 				//? > 1.21.1 {
-				 || isLeafBlock(block);
-				//? } else {
-				/*;
-				*///? }
+				 /*|| isLeafBlock(block);
+				*///? } else {
+				;
+				//? }
 	}
 
 	private static ParticleOptions getParticleForBlock(Block block, BlockState blockState, BlockPos blockPos, Minecraft client) {
 		//? > 1.21.1 {
 
-		if (block.equals(Blocks.PALE_OAK_LEAVES)) {
+		/*if (block.equals(Blocks.PALE_OAK_LEAVES)) {
 			return ParticleTypes.PALE_OAK_LEAVES;
 		} else if (block.equals(Blocks.CHERRY_LEAVES)) {
 			return ParticleTypes.CHERRY_LEAVES;
@@ -307,15 +307,15 @@ public class FootprintSpawner {
 			return new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState);
 		}
 
-		//? } else {
+		*///? } else {
 
-		/*if (block.equals(Blocks.SNOW) || block.equals(Blocks.SNOW_BLOCK)) {
+		if (block.equals(Blocks.SNOW) || block.equals(Blocks.SNOW_BLOCK)) {
 			assert client.level != null;
 			return ParticleTypes.SNOWFLAKE;
 		} else {
 			return new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState);
 		}
 
-		*///? }
+		//? }
 	}
 }

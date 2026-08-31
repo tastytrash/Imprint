@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonArray;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import org.tastytrash.imprint.client.ImprintClient;
 
 import java.io.InputStream;
@@ -27,7 +27,7 @@ public class FootprintDataLoader {
                 JsonArray ignoredArray = root.getAsJsonArray("ignored_entities");
                 for (JsonElement element : ignoredArray) {
                     String entityIdStr = element.getAsString();
-                    Identifier entityId = Identifier.tryParse(entityIdStr);
+                    ResourceLocation entityId = ResourceLocation.tryParse(entityIdStr);
                     if (entityId != null) {
                         FootprintUtil.registerIgnoredEntity(entityId);
                     } else {
@@ -41,7 +41,7 @@ public class FootprintDataLoader {
                 JsonObject entities = root.getAsJsonObject("entities");
 
                 for (Map.Entry<String, JsonElement> entry : entities.entrySet()) {
-                    Identifier entityId = Identifier.tryParse(entry.getKey());
+                    ResourceLocation entityId = ResourceLocation.tryParse(entry.getKey());
                     if (entityId == null) {
                         ImprintClient.LOGGER.warn("Invalid entity ID: {}", entry.getKey());
                         continue;

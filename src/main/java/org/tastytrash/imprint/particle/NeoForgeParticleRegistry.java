@@ -1,7 +1,7 @@
 package org.tastytrash.imprint.particle;
 //? if neoforge {
 
-import net.minecraft.core.particles.ParticleType;
+/*import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.bus.api.IEventBus;
@@ -46,4 +46,4 @@ public class NeoForgeParticleRegistry {
 		org.tastytrash.imprint.util.FootprintUtil.loadFromJson();
 	}
 }
-//? }
+*///? }

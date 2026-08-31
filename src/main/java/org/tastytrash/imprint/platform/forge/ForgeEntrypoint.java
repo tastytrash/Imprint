@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.forge;
 
 //? forge {
 
-/*import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.tastytrash.imprint.Imprint;
@@ -18,4 +18,4 @@ public class ForgeEntrypoint {
 		ForgeParticleRegistry.register(modEventBus);
 	}
 }
-*///?}
+//?}

@@ -2,7 +2,7 @@ package org.tastytrash.imprint.platform.neoforge;
 
 //? neoforge {
 
-import net.neoforged.bus.api.IEventBus;
+/*import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import org.tastytrash.imprint.Imprint;
@@ -17,4 +17,4 @@ public class NeoforgeEntrypoint {
 		NeoForgeParticleRegistry.register(bus);
 	}
 }
-//?}
+*///?}
