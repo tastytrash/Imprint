@@ -1,5 +1,3 @@
 big mobs should leave dust on every block?
 
 focus on lightweight in readme
-
-footprints spawning over water

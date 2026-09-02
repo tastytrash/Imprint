@@ -184,8 +184,6 @@ public class FootprintUtil {
 
             if (cornerState.isAir()) return false;
 
-            if (cornerState.getFluidState().isSource()) return true;
-
             VoxelShape cornerShape = cornerState.getCollisionShape(world, cornerPos);
             if (cornerShape.isEmpty()) return false;
 
