@@ -2,6 +2,7 @@
 #### Simple footprint visualization.
 
 [![Imprint](https://modfolio.creeperkatze.dev/curseforge/project/1662887/downloads)](https://www.curseforge.com/minecraft/mc-mods/imprint)
+[![Imprint](https://modfolio.creeperkatze.dev/modrinth/project/imprint/downloads)](https://modrinth.com/mod/imprint)
 ___
 ![Player Walking GIF](https://cdn.modrinth.com/data/cached_images/55cb604dae0fa535f6f21ec13a90bb25b36d4475.gif) ![Camel Walking GIF](https://cdn.modrinth.com/data/cached_images/afc412fc83f3454ba62e47f3fdfbc86a6a313b63.gif)
 ###### _shaders used in GIFs, not included with the mod_
