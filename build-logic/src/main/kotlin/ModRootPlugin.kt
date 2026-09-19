@@ -31,9 +31,15 @@ class ModRootPlugin : Plugin<Project> {
 				}
 			}
 
-			stonecutter.tasks {
-				order("publishModrinth")
-				order("publishCurseforge")
+			afterEvaluate {
+				stonecutter.tasks {
+					if (tasks.findByName("publishModrinth") != null) {
+						order("publishModrinth")
+					}
+					if (tasks.findByName("publishCurseforge") != null) {
+						order("publishCurseforge")
+					}
+				}
 			}
 
 			tasks.register("runActiveClient") {

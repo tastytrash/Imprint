@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.tastytrash.imprint.client.ImprintClient;
 
-//? < 26.1 {
+//? < 1.21.11 {
  /*import net.minecraft.client.renderer.RenderType;
 *///? }
 
@@ -40,7 +40,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	private static final float HARDNESS_MULTIPLIER = 0.8f;
 
 	public FootprintParticle(ClientLevel level, double x, double y, double z, double velX, double velY, double velZ, float yaw, SpriteSet sprites, float size, float alphaOffset) {
-		//? < 26.1 {
+		//? < 1.21.11 {
 		 /*super(level, x, y, z);
 		*///? } else {
 		super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
@@ -110,7 +110,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	@Override
 	public void tick() {
 		this.age++;
-		//? >= 26.1 {
+		//? >= 1.21.11 {
 		this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
 		//? }
 		if (this.age >= this.lifetime) {
@@ -128,7 +128,7 @@ public class FootprintParticle extends SingleQuadParticle {
 		}
 	}
 
-	//? >= 26.1 {
+	//? >= 1.21.11 {
 	@Override
 	protected Layer getLayer() {
 		return Layer.TRANSLUCENT;
@@ -159,7 +159,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 	*///? }
 
-	//? < 26.1 {
+	//? < 1.21.11 {
 	/*@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
@@ -186,7 +186,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 	*///? }
 
-	//? >= 26.1 && fabric {
+	//? >= 1.21.11 && fabric {
 	/*@Environment(EnvType.CLIENT)
 	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
@@ -211,7 +211,7 @@ public class FootprintParticle extends SingleQuadParticle {
 		}
 	}
 
-	*///? } else if neoforge || forge && < 26.1 {
+	*///? } else if neoforge || forge && < 1.21.11 {
 	/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
 		@Override

@@ -4,7 +4,7 @@ package org.tastytrash.imprint.config;
 /*import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 
-//? >= 26.1 {
+//? >= 1.21.11 {
 
 import me.shedaniel.autoconfig.AutoConfigClient;
 
@@ -20,7 +20,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-		//? >= 26.1 {
+		//? >= 1.21.11 {
 
 		return parent -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parent).get();
 

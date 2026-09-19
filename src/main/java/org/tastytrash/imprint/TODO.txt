@@ -1,3 +1,3 @@
-big mobs should leave dust on every block?
+particles facing the player instead of the ground with sodium installed (at least in NeoForge 1.21.1)
 
-focus on lightweight in readme
+add particle cloud when landing with a high velocity

@@ -16,7 +16,7 @@ import org.tastytrash.imprint.client.ImprintClient;
 import org.tastytrash.imprint.config.ImprintConfig;
 import org.tastytrash.imprint.particle.ParticleRegistry;
 
-//? >= 26.1 {
+//? >= 1.21.11 {
 import net.minecraft.world.entity.monster.zombie.Zombie;
 //? } else {
 /*import net.minecraft.world.entity.monster.Zombie;
@@ -183,8 +183,6 @@ public class FootprintUtil {
             BlockState cornerState = world.getBlockState(cornerPos);
 
             if (cornerState.isAir()) return false;
-
-            if (cornerState.getFluidState().isSource()) return true;
 
             VoxelShape cornerShape = cornerState.getCollisionShape(world, cornerPos);
             if (cornerShape.isEmpty()) return false;

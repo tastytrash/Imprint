@@ -26,7 +26,7 @@ url = "https://github.com/tastytrash"
 #url = "https://github.com/ghost"
 
 [fabric]
-deps.fabric-loader = "0.19.2"
+deps.fabric-loader = "0.19.3"
 
 [fabric."1.20.1"]
 deps.minecraft = "1.20.1"
@@ -47,6 +47,12 @@ deps.modmenu = "15.0.0"
 deps.cloth_config = "19.0.147"
 publish.additionalVersions = ["1.21.6"]
 
+[fabric."1.21.11"]
+deps.minecraft = "1.21.11"
+deps.fabric-api = "0.141.6+1.21.11"
+deps.modmenu = "17.0.0"
+deps.cloth_config = "21.11.153"
+
 [fabric."26.1.2"]
 deps.minecraft = "26.1.2"
 deps.fabric-api = "0.155.2+26.1.2"
@@ -59,6 +65,12 @@ deps.minecraft = "26.2"
 deps.fabric-api = "0.158.0+26.2"
 deps.modmenu = "20.0.1"
 deps.cloth_config = "26.2.155"
+
+[fabric."26.3"]
+deps.minecraft = "26.3"
+deps.fabric-api = "0.160.5+26.3"
+deps.modmenu = "21.0.0-beta.1"
+deps.cloth_config = "26.3.158"
 
 [forge]
 accessTransformers = []
@@ -82,6 +94,11 @@ deps.neoforge = "21.7.25-beta"
 publish.additionalVersions = ["1.21.6"]
 deps.cloth_config = "19.0.147"
 
+[neoforge."1.21.11"]
+deps.minecraft = "1.21.11"
+deps.neoforge = "21.11.45"
+deps.cloth_config = "21.11.153"
+
 [neoforge."26.1.2"]
 deps.minecraft = "26.1.2"
 deps.neoforge = "26.1.2.97"
@@ -92,3 +109,8 @@ deps.cloth_config = "26.1.154"
 deps.minecraft = "26.2"
 deps.neoforge = "26.2.0.66"
 deps.cloth_config = "26.2.155"
+
+[neoforge."26.3"]
+deps.minecraft = "26.3"
+deps.neoforge = "26.3.0.1-beta"
+deps.cloth_config = "26.3.158"

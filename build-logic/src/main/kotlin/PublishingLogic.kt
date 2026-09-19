@@ -57,7 +57,18 @@ fun Project.configureMavenPublishing(ctx: Context) {
 	}
 }
 
+private fun capitalizeLoader(loaderId: String): String {
+	return when (loaderId) {
+		"neoforge" -> "NeoForge"
+		else -> loaderId.replaceFirstChar(Char::titlecase)
+	}
+}
+
 fun Project.configureModPublishing(ctx: Context) {
+	if (ctx.loader.id == "forge" && ctx.currentMcVersion == "1.20.1") {
+		return
+	}
+
 	val releaseType = releaseTypeFromChannelTag(ctx.channelTag)
 
 	extensions.configure<ModPublishExtension>("publishMods") {
@@ -84,7 +95,7 @@ fun Project.configureModPublishing(ctx: Context) {
 		modLoaders.add(ctx.loader.id)
 
 		displayName =
-			"${ctx.modName} ${ctx.basicVersion} ${ctx.loader.id.replaceFirstChar(Char::titlecase)} ${ctx.currentMcVersion}"
+			"${ctx.modName} ${ctx.basicVersion} ${capitalizeLoader(ctx.loader.id)} ${ctx.currentMcVersion}"
 
 		if (githubEnabled) {
 			github {
@@ -118,7 +129,7 @@ private fun ModPublishExtension.modrinth(
 
 	// Platform-specific formatting for Modrinth
 	version = "v${ctx.basicVersion}-${ctx.loader.id}+${ctx.currentMcVersion}"
-	displayName = "${ctx.modName} v${ctx.basicVersion} (${ctx.loader.id.replaceFirstChar(Char::titlecase)} ${ctx.currentMcVersion})"
+	displayName = "${ctx.modName} v${ctx.basicVersion} (${capitalizeLoader(ctx.loader.id)} ${ctx.currentMcVersion})"
 
 	if (!staging) {
 		val platform = this
@@ -143,7 +154,7 @@ private fun ModPublishExtension.curseforge(
 	this.accessToken = accessToken
 	minecraftVersions.addAll(listOf(ctx.currentMcVersion) + additionalVersions)
 
-	displayName = "[${ctx.loader.id.replaceFirstChar(Char::titlecase)} ${ctx.currentMcVersion}] v${ctx.basicVersion}"
+	displayName = "[${capitalizeLoader(ctx.loader.id)} ${ctx.currentMcVersion}] v${ctx.basicVersion}"
 
 	val platform = this
 	project.afterEvaluate {
