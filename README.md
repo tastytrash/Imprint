@@ -39,8 +39,6 @@ Inspired by [FootprintParticle](https://github.com/Rivmun/FootprintParticle) by 
 
 ## Note
 
-**!!! There is a known rendering issue w/ 1.21.1; when sodium 0.8.12+ is installed, footprint particles may face the player instead of staying flat on the ground**
-
 Suggested features, improvements, bug fixes, etc. are welcome on github.
 
 Feel free to use this in modpacks! It was designed with that in mind. Reach out to me if there are compatibility issues or any other issues. Also let me know if there are any versions you want supported, and I can try my best, just know its not always possible.

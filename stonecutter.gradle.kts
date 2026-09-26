@@ -20,5 +20,4 @@ stonecutter parameters {
 	swaps["mod_group"] = "\"${properties.get<String>("mod.group")}\";"
 	swaps["minecraft"] = "\"${current.version}\";"
 	constants["release"] = properties.get<String>("mod.id") != "modtemplate"
-
 }

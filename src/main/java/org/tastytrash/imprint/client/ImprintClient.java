@@ -22,8 +22,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 //? >= 1.21.11 {
-import me.shedaniel.autoconfig.AutoConfigClient;
-//? }
+/*import me.shedaniel.autoconfig.AutoConfigClient;
+*///? }
 
 //?}
 
@@ -52,10 +52,10 @@ public class ImprintClient {
 		container.registerExtensionPoint(
 				IConfigScreenFactory.class,
 				//? < 1.21.11 {
-				 /*(modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				*///? } else {
-				(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
-				//? }
+				 (modContainer, parentScreen) -> AutoConfig.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				//? } else {
+				/*(modContainer, parentScreen) -> AutoConfigClient.getConfigScreen(ImprintConfig.class, parentScreen).get()
+				*///? }
 		);
 		//?} else if forge {
 		/*ModLoadingContext.get().registerExtensionPoint(

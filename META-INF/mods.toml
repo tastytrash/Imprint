@@ -23,7 +23,7 @@ type = "required"
 [[mods]]
 modId = "imprint"
 displayName = "Imprint"
-version = "1.2"
+version = "1.4"
 displayURL = "https://github.com/tastytrash/Imprint"
 modUrl = "https://github.com/tastytrash/Imprint"
 logoFile = "assets/icon.png"

@@ -4,6 +4,7 @@
 /*import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 *///? }
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
@@ -23,8 +24,8 @@ import org.joml.Quaternionf;
 import org.tastytrash.imprint.client.ImprintClient;
 
 //? < 1.21.11 {
- /*import net.minecraft.client.renderer.RenderType;
-*///? }
+ import net.minecraft.client.renderer.RenderType;
+//? }
 
 import java.awt.Color;
 import java.util.ArrayDeque;
@@ -41,10 +42,10 @@ public class FootprintParticle extends SingleQuadParticle {
 
 	public FootprintParticle(ClientLevel level, double x, double y, double z, double velX, double velY, double velZ, float yaw, SpriteSet sprites, float size, float alphaOffset) {
 		//? < 1.21.11 {
-		 /*super(level, x, y, z);
-		*///? } else {
-		super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
-		//? }
+		 super(level, x, y, z);
+		//? } else {
+		/*super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
+		*///? }
 
 		this.sprites = sprites;
 		this.lifetime = Mth.abs((int) (ImprintClient.config.footprintLifetime * 20));
@@ -111,8 +112,8 @@ public class FootprintParticle extends SingleQuadParticle {
 	public void tick() {
 		this.age++;
 		//? >= 1.21.11 {
-		this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
-		//? }
+		/*this.setSprite(this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5));
+		*///? }
 		if (this.age >= this.lifetime) {
 			this.remove();
 			SPAWNED_FOOTPRINTS.remove(this);
@@ -129,18 +130,24 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 
 	//? >= 1.21.11 {
-	@Override
+	/*@Override
 	protected Layer getLayer() {
 		return Layer.TRANSLUCENT;
 	}
-	//? }
+	*///? }
 
-	//? > 1.20.1 {
+	//? >= 1.21.11 {
+//	@Override
+//	public FacingCameraMode getFacingCameraMode() {
+//		return (target, camera, partialTickTime) -> target.rotationX(-Mth.PI/2);
+//	}
+	//? } else if > 1.20.1 {
 	@Override
-	public FacingCameraMode getFacingCameraMode() {
-		return (target, camera, partialTickTime) -> target.rotationX(-Mth.PI/2);
-	}
+	public void render(VertexConsumer buffer, Camera camera, float partialTicks) {
+		Quaternionf quaternion = new Quaternionf().rotationX(-Mth.PI / 2.0f);
 
+		this.renderRotatedQuad(buffer, camera, quaternion, partialTicks);
+	}
 	//? } else {
 	/*@Override
 	public void render(com.mojang.blaze3d.vertex.VertexConsumer buffer, Camera camera, float partialTicks) {
@@ -160,7 +167,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	*///? }
 
 	//? < 1.21.11 {
-	/*@Override
+	@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
 	}
@@ -184,7 +191,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	protected float getV1() {
 		return this.sprites.get(Math.max(0, this.age - (this.lifetime - 5)), 5).getV1();
 	}
-	*///? }
+	//? }
 
 	//? >= 1.21.11 && fabric {
 	/*@Environment(EnvType.CLIENT)
@@ -212,7 +219,7 @@ public class FootprintParticle extends SingleQuadParticle {
 	}
 
 	*///? } else if neoforge || forge && < 1.21.11 {
-	/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+	public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
 		public Particle createParticle(SimpleParticleType particleOptions, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
@@ -220,8 +227,8 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(clientLevel, d, e, f, g, h, i, 0.0f, sprites, size, alphaOffset);
 		}
 	}
-	*///? } else if neoforge {
-		public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
+	//? } else if neoforge {
+		/*public record Factory(SpriteSet sprites, float size) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
 		public @org.jspecify.annotations.Nullable Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double v, double v1, double v2, double v3, double v4, double v5, RandomSource randomSource) {
@@ -230,5 +237,5 @@ public class FootprintParticle extends SingleQuadParticle {
 			return new FootprintParticle(clientLevel, v, v1, v2, v3, v4, v5, yaw, sprites, size, alphaOffset);
 		}
 	}
-	//? }
+	*///? }
 }

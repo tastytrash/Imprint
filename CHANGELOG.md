@@ -1,1 +1,1 @@
-Fixed footprint spawning on servers, improved performance and collision detection, many general performance fixes
+Fixed an issue with Sodium causing the footprints to face the players camera instead of lying flat

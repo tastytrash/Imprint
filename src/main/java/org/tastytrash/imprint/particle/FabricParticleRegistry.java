@@ -4,7 +4,7 @@ package org.tastytrash.imprint.particle;
 /*import net.minecraft.core.Registry;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import org.tastytrash.imprint.client.ImprintClient;
 
 //? >= 26.1 {
@@ -33,9 +33,9 @@ public class FabricParticleRegistry {
 		SimpleParticleType type = Registry.register(
 				BuiltInRegistries.PARTICLE_TYPE,
 				//? > 1.20.1 {
-				Identifier.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
+				ResourceLocation.fromNamespaceAndPath(ImprintClient.MOD_ID, name),
 				//? } else {
-				/^new Identifier(ImprintClient.MOD_ID, name),
+				/^new ResourceLocation(ImprintClient.MOD_ID, name),
 				^///? }
 				FabricParticleTypes.simple(true)
 		);

@@ -7,10 +7,10 @@ import org.slf4j.LoggerFactory;
 
 //? fabric {
 /*import org.tastytrash.imprint.platform.fabric.FabricPlatform;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 *///?} neoforge {
 import org.tastytrash.imprint.platform.neoforge.NeoforgePlatform;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
  //?} forge {
 /*import org.tastytrash.imprint.platform.forge.ForgePlatform;
  *///?}
@@ -50,19 +50,19 @@ public class Imprint {
 	}
 
 	//? if !forge {
-	private static Identifier id(String path) {
+	private static ResourceLocation id(String path) {
 		//? > 1.20.1 {
-		 return Identifier.fromNamespaceAndPath(MOD_ID, path);
+		 return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
 		 //?} <= 1.20.1 {
-		/*return new Identifier(MOD_ID, path);
+		/*return new ResourceLocation(MOD_ID, path);
 		*///?}
 	}
 
-	private static Identifier id(String namespace, String path) {
+	private static ResourceLocation id(String namespace, String path) {
 		//? > 1.20.1 {
-		 return Identifier.fromNamespaceAndPath(namespace, path);
+		 return ResourceLocation.fromNamespaceAndPath(namespace, path);
 		//?} <= 1.20.1 {
-		/*return new Identifier(namespace, path);
+		/*return new ResourceLocation(namespace, path);
 		*///?}
 	}
 	//? }

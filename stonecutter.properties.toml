@@ -3,7 +3,7 @@ loomx.loom_version="1.16-SNAPSHOT"
 mod.id = "imprint"
 mod.name = "Imprint"
 mod.group = "org.tastytrash"
-mod.version = "1.4"
+mod.version = "1.4.1"
 mod.description = "Adds customizable vanilla-style footprint particles."
 mod.authors = ["tastytrash"]
 #mod.contributors = ["ContributorName", "AnotherContributorName"]
@@ -112,5 +112,5 @@ deps.cloth_config = "26.2.155"
 
 [neoforge."26.3"]
 deps.minecraft = "26.3"
-deps.neoforge = "26.3.0.1-beta"
+deps.neoforge = "26.3.0.16-beta"
 deps.cloth_config = "26.3.158"
