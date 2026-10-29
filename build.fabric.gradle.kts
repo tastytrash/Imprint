@@ -36,6 +36,7 @@ platform {
 			fabricLikeVersionRange = ">=${prop("deps.fabric-loader")}"
 		}
 		optional("modmenu") {}
+		required("cloth-config") {}
 	}
 }
 
